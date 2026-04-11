@@ -120,12 +120,12 @@ export function GlassmorphismNav() {
                 href="/"
                 className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
               >
-                <div className="h-6 md:h-7 flex items-center justify-center">
+                <div className="h-8 md:h-10 flex items-center justify-center">
                   <Image
                     src="/images/ecc-digital-logo.png"
                     alt="ECC Digital"
-                    width={84}
-                    height={28}
+                    width={150}
+                    height={40}
                     className="h-full w-auto object-contain"
                   />
                 </div>

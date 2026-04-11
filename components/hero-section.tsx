@@ -35,7 +35,8 @@ export function HeroSection() {
         <div className="flex items-center justify-center gap-3 mb-8 animate-fade-in-heading">
           <RotatingText
             texts={["Educate", "Create", "Care"]}
-            mainClassName="px-3 sm:px-4 md:px-5 bg-white text-black overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg shadow-lg text-2xl sm:text-3xl md:text-4xl font-bold"
+            mainClassName="px-3 sm:px-4 md:px-5 bg-white !text-black overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg shadow-lg text-2xl sm:text-3xl md:text-4xl font-bold"
+            elementLevelClassName="!text-black"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
