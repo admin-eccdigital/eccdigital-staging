@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Menu, X, ArrowRight } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
 const navigation = [
@@ -113,7 +112,7 @@ export function GlassmorphismNav() {
         }}
       >
         {/* Main Navigation */}
-        <div className="w-[90vw] max-w-xs md:max-w-4xl mx-auto">
+        <div className="w-[90vw] max-w-xs md:max-w-6xl mx-auto">
           <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-3 md:px-6 md:py-2">
             <div className="flex items-center justify-between">
               {/* Logo */}
@@ -122,11 +121,9 @@ export function GlassmorphismNav() {
                 className="flex items-center hover:scale-105 transition-transform duration-200 cursor-pointer"
               >
                 <div className="h-8 md:h-10 flex items-center justify-center">
-                  <Image
+                  <img
                     src="/images/ecc-digital-logo.png"
                     alt="ECC Digital"
-                    width={150}
-                    height={40}
                     className="h-full w-auto object-contain"
                   />
                 </div>
