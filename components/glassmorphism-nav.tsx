@@ -11,6 +11,7 @@ const navigation = [
   { name: "O nás", href: "#o-nas" },
   { name: "Reference", href: "#reference" },
   { name: "Kontakt", href: "#kontakt" },
+  { name: "Banner Generator", href: "/banner-generator" },
 ]
 
 export function GlassmorphismNav() {
