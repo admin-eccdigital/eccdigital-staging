@@ -18,15 +18,8 @@ export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 py-20 relative">
       <div className="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-hero">
-        {/* Main Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-balance mb-6 mt-12 animate-fade-in-heading">
-          <span className="text-foreground">Pomáháme firmám</span>
-          <br />
-          <span className="text-foreground">v digitálním růstu</span>
-        </h1>
-
         {/* Animated Rotating Text */}
-        <div className="flex items-center justify-center gap-3 mb-8 animate-fade-in-heading">
+        <div className="flex items-center justify-center gap-3 mb-6 mt-12 animate-fade-in-heading">
           <RotatingText
             texts={["Educate", "Create", "Care"]}
             mainClassName="px-3 sm:px-4 md:px-5 bg-white !text-black overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg shadow-lg text-2xl sm:text-3xl md:text-4xl font-bold"
@@ -42,6 +35,13 @@ export function HeroSection() {
           />
           <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Digital</span>
         </div>
+
+        {/* Main Heading */}
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-balance mb-6 animate-fade-in-heading">
+          <span className="text-foreground">Pomáháme firmám</span>
+          <br />
+          <span className="text-foreground">v digitálním růstu</span>
+        </h1>
 
         {/* Subheading */}
         <p className="text-base sm:text-xl md:text-2xl text-white text-balance max-w-sm sm:max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 sm:px-0 animate-fade-in-subheading font-light">

@@ -122,7 +122,7 @@ export function GlassmorphismNav() {
               >
                 <div className="h-8 md:h-10 flex items-center justify-center">
                   <img
-                    src="/images/ecc-digital-logo.png"
+                    src="/eccdigital-staging/images/ecc-digital-logo.png"
                     alt="ECC Digital"
                     className="h-full w-auto object-contain"
                   />
