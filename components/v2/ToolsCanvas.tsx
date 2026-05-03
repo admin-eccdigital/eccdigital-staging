@@ -185,10 +185,16 @@ export function ToolsCanvas() {
         const dx = b.x - mx,
           dy = b.y - my
         const d = Math.hypot(dx, dy)
-        if (d < b.r + 70 && d > 0.01) {
-          const f = ((b.r + 70 - d) / (b.r + 70)) * 0.5
+        // Repel only when cursor is OUTSIDE the bubble — once it's hovering
+        // inside, leave the bubble alone so the user can read the tooltip.
+        if (d > b.r && d < b.r + 70) {
+          const f = ((b.r + 70 - d) / 70) * 0.5
           b.vx += (dx / d) * f
           b.vy += (dy / d) * f
+        } else if (d <= b.r) {
+          // Inside the bubble — actively damp residual velocity so it settles.
+          b.vx *= 0.82
+          b.vy *= 0.82
         }
       }
 
