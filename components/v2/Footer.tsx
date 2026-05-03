@@ -32,23 +32,27 @@ export function Footer() {
         </div>
         <div className="footer-cols">
           <div className="footer-col">
-            <h4>Služby</h4>
+            <h4>Výkonnostní marketing</h4>
             <ul>
-              <li><a href="#">Výkonnostní kampaně</a></li>
-              <li><a href="#">Tvorba webů</a></li>
-              <li><a href="#">Analytika</a></li>
-              <li><a href="#">Strategie</a></li>
-              <li><a href="#">Školení</a></li>
+              <li><a href="#sluzby">Meta Ads (Facebook, Instagram)</a></li>
+              <li><a href="#sluzby">Google Ads (Search, Performance Max)</a></li>
+              <li><a href="#sluzby">Sklik a Seznam reklama</a></li>
+              <li><a href="#sluzby">TikTok &amp; LinkedIn Ads</a></li>
+              <li><a href="#sluzby">Microsoft Ads</a></li>
+              <li><a href="#sluzby">Heureka, Zboží.cz a srovnávače</a></li>
+              <li><a href="#sluzby">Analytika GA4 a server-side tracking</a></li>
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Reference</h4>
+            <h4>Tvorba prezentací a obsahu</h4>
             <ul>
-              <li><a href="https://klimahome.cz" target="_blank" rel="noopener noreferrer">Klimahome</a></li>
-              <li><a href="https://escoflooring.com" target="_blank" rel="noopener noreferrer">Escoflooring</a></li>
-              <li><a href="https://marksys.cz" target="_blank" rel="noopener noreferrer">Marksys</a></li>
-              <li><a href="https://florea.cz" target="_blank" rel="noopener noreferrer">Florea.cz</a></li>
-              <li><a href="https://profikas.cz" target="_blank" rel="noopener noreferrer">Profikas.cz</a></li>
+              <li><a href="#weby">Firemní weby (WordPress, Next.js)</a></li>
+              <li><a href="#weby">E-shopy (WooCommerce, Shoptet)</a></li>
+              <li><a href="#weby">Vícejazyčné weby a landing pages</a></li>
+              <li><a href="#sluzby">PPC bannery a kreativy</a></li>
+              <li><a href="#sluzby">Audity webů a UX</a></li>
+              <li><a href="#sluzby">Reporting a Looker Studio</a></li>
+              <li><a href="#sluzby">Školení marketingových týmů</a></li>
             </ul>
           </div>
           <div className="footer-col">

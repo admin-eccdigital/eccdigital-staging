@@ -361,6 +361,22 @@ export function ToolsCanvas() {
             detail.
           </p>
         </Reveal>
+        {/* Mobile-friendly pill list — shown below 680px width via CSS, hides bubble canvas */}
+        <div className="tools-pills-mobile" aria-hidden={false}>
+          {TOOL_CATEGORIES.map((cat) => (
+            <div key={cat.id} style={{ display: "contents" }}>
+              <div className="tp-cat">
+                <span className="tp-cat-dot" style={{ background: cat.color }} />
+                {cat.label}
+              </div>
+              {cat.tools.map((t) => (
+                <span key={t} className="tp-pill" style={{ "--tp-color": cat.color } as React.CSSProperties}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
         <div className="tools-canvas-wrap" ref={wrapRef}>
           <canvas ref={canvasRef} />
           {hoverBubble && (

@@ -10,6 +10,7 @@ type Post = {
   title: string
   desc: string
   palette: [string, string]
+  image: string
 }
 
 const POSTS: Post[] = [
@@ -21,6 +22,7 @@ const POSTS: Post[] = [
     title: "Jak používáme Claude v každodenním PPC reportingu",
     desc: "Konkrétní use-case: od přípravy zadání pro klienta po automatickou analýzu výkonu kampaní napříč platformami.",
     palette: ["oklch(0.66 0.18 320)", "oklch(0.78 0.14 290)"],
+    image: "/eccdigital-staging/images/blog/claude-ppc-reporting.webp",
   },
   {
     slug: "audit-jako-prvni-krok",
@@ -30,6 +32,7 @@ const POSTS: Post[] = [
     title: "Audit jako první krok. Proč nikdy nezačínáme reklamou.",
     desc: "Než zapneme kampaně, vždy se nejprve díváme na data, web a celý zákaznický cyklus. Vysvětlujeme proč.",
     palette: ["oklch(0.70 0.16 145)", "oklch(0.82 0.12 130)"],
+    image: "/eccdigital-staging/images/blog/audit-prvni-krok.webp",
   },
   {
     slug: "klimahome-pripadovka",
@@ -39,6 +42,7 @@ const POSTS: Post[] = [
     title: "Klimahome — od nuly k stabilnímu přílivu poptávek",
     desc: "Jak jsme za rok postavili web, výkonnostní strategii a vyladili příliv poptávek pro instalátora tepelných čerpadel.",
     palette: ["oklch(0.72 0.14 230)", "oklch(0.85 0.10 200)"],
+    image: "/eccdigital-staging/images/blog/klimahome-pripadovka.webp",
   },
 ]
 
@@ -46,8 +50,14 @@ function BlogCard({ p }: { p: Post }) {
   const grad = `linear-gradient(135deg, ${p.palette[0]}, ${p.palette[1]})`
   return (
     <a className="blog-card" href={`/eccdigital-staging/blog/article/?slug=${p.slug}`}>
-      <div className="blog-thumb" style={{ background: grad }}>
-        <div className="case-thumb-grid" />
+      <div
+        className="blog-thumb"
+        style={{
+          backgroundImage: `url(${p.image}), ${grad}`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <span className="blog-cat">{p.cat}</span>
       </div>
       <div className="blog-body">

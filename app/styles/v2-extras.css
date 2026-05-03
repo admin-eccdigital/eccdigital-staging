@@ -257,3 +257,88 @@
     0 24px 48px -20px rgba(15,23,42,.36);
   border-color:rgba(15,23,42,.14);
 }
+
+/* Mobile / robustness fixes */
+.nav-logo img{width:auto !important;max-width:none}
+.footer-brand img{width:auto;max-width:160px;height:auto}
+.cta-contact-photo img{width:96px;height:96px}
+
+/* Hide hero trust row labels carefully on small screens (keep but tighter) */
+@media(max-width:540px){
+  .hero-trust{margin-top:40px;gap:12px}
+  .hero-trust-row{gap:18px 22px}
+  .hero-trust-row span{font-size:13px}
+}
+
+/* Mobile: hide bubble canvas, show pill list instead. Bubbles are too cramped
+   on narrow screens to interact with. Pills are tappable and filterable. */
+@media(max-width:680px){
+  .tools-canvas-wrap{display:none}
+  .tools-pills-mobile{display:flex !important}
+}
+.tools-pills-mobile{display:none;flex-wrap:wrap;gap:8px;justify-content:center;max-width:540px;margin:0 auto;padding:8px 4px}
+.tools-pills-mobile .tp-cat{width:100%;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.55);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin:14px 0 4px;padding:0 4px}
+.tools-pills-mobile .tp-cat:first-child{margin-top:0}
+.tools-pills-mobile .tp-cat-dot{width:10px;height:10px;border-radius:9999px}
+.tools-pills-mobile .tp-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:9999px;color:rgba(255,255,255,.92);font-size:13px;font-weight:500;line-height:1}
+.tools-pills-mobile .tp-pill::before{content:"";width:6px;height:6px;border-radius:9999px;background:var(--tp-color,var(--accent))}
+
+/* About stats — more punch + contrast */
+.astat--hero{
+  background:linear-gradient(180deg,#0f172a 0%,#0a0e18 100%) !important;
+  border-color:rgba(255,138,77,.30) !important;
+  box-shadow:
+    0 1px 2px rgba(255,138,77,.10),
+    0 18px 48px -18px rgba(255,138,77,.32),
+    0 30px 60px -28px rgba(15,23,42,.40);
+}
+.astat--hero::before{
+  background:radial-gradient(closest-side,rgba(255,138,77,.45),transparent) !important;
+}
+.astat-num--xl{
+  background:linear-gradient(180deg,#fff 0%,oklch(0.85 0.16 50) 50%,var(--accent) 100%) !important;
+  -webkit-background-clip:text !important;
+  background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  filter:drop-shadow(0 8px 24px rgba(255,138,77,.35));
+}
+.astat--row{border:1px solid rgba(15,23,42,.10) !important;box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px -16px rgba(15,23,42,.18)}
+.astat--row .astat-num{background:linear-gradient(180deg,var(--accent) 0%,oklch(0.55 0.18 25) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;font-size:clamp(40px,4vw,56px)}
+.astat--row .astat-num span{-webkit-text-fill-color:#94a3b8 !important;font-weight:600}
+.astat-bar span{box-shadow:0 0 16px rgba(255,138,77,.45)}
+
+/* ============ Cookie consent bar ============ */
+.cookiebar-wrap{position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;display:flex;justify-content:center;pointer-events:none;animation:cbSlideIn .4s var(--ease-out)}
+@keyframes cbSlideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.cookiebar{position:relative;background:rgba(15,18,24,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.10);border-radius:20px;color:#fff;padding:20px 22px;width:min(960px,100%);box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);pointer-events:auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;overflow:hidden}
+.cookiebar::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 50% 60% at 100% 0%,black 5%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 50% 60% at 100% 0%,black 5%,transparent 70%)}
+.cookiebar::after{content:"";position:absolute;top:-30%;right:-10%;width:40%;height:200%;background:radial-gradient(closest-side,rgba(255,138,77,.18),transparent);pointer-events:none}
+.cookiebar > *{position:relative;z-index:1}
+.cookiebar-icon{width:44px;height:44px;border-radius:14px;background:rgba(255,138,77,.12);border:1px solid rgba(255,138,77,.25);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cookiebar-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:4px}
+.cookiebar-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.55;margin:0}
+.cookiebar-desc a{color:var(--accent);text-decoration:none}
+.cookiebar-desc a:hover{text-decoration:underline}
+.cookiebar-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cb-btn{padding:9px 16px;border-radius:9999px;font-size:13px;font-weight:600;border:0;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.cb-btn--ghost{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.12)}
+.cb-btn--ghost:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.20)}
+.cb-btn--primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 4px 14px rgba(255,138,77,.35)}
+.cb-btn--primary:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(255,138,77,.45)}
+.cookiebar-settings{grid-column:1 / -1}
+.cookiebar-settings .cookiebar-actions{margin-top:16px}
+.cb-row{display:flex;justify-content:space-between;gap:18px;padding:14px 0;border-top:1px solid rgba(255,255,255,.06)}
+.cb-row:first-of-type{border-top:0;margin-top:6px}
+.cb-row strong{display:block;font-size:14px;color:#fff;font-weight:600;margin-bottom:2px}
+.cb-row p{margin:0;font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.cb-toggle{flex-shrink:0;width:46px;height:26px;border-radius:9999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);cursor:pointer;position:relative;padding:0;transition:background .2s,border-color .2s}
+.cb-toggle.is-on{background:linear-gradient(90deg,var(--accent),var(--accent-2));border-color:transparent}
+.cb-toggle.is-disabled{background:rgba(255,255,255,.04);cursor:not-allowed;opacity:.6}
+.cb-toggle-knob{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:9999px;background:#fff;transition:left .2s var(--ease-out);box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.cb-toggle.is-on .cb-toggle-knob{left:22px}
+@media(max-width:680px){
+  .cookiebar{grid-template-columns:1fr;padding:18px;gap:14px}
+  .cookiebar-icon{display:none}
+  .cookiebar-actions{flex-direction:column;align-items:stretch}
+  .cb-btn{width:100%}
+}

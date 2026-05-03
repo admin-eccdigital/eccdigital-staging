@@ -8,6 +8,7 @@ import { Blog } from "@/components/v2/Blog"
 import { CTA } from "@/components/v2/CTA"
 import { Footer } from "@/components/v2/Footer"
 import { LeadModal } from "@/components/v2/LeadModal"
+import { CookieBar } from "@/components/v2/CookieBar"
 
 export default function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function HomePage() {
       <CTA />
       <Footer />
       <LeadModal />
+      <CookieBar />
     </>
   )
 }

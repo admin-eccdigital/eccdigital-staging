@@ -12,12 +12,6 @@ export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-inner">
-        <div style={{ textAlign: "center" }}>
-          <div className="hero-badge">
-            <span className="dot" />
-            Akce do 31. 5. · Návrh webu zdarma
-          </div>
-        </div>
         <div className="hero-chip-row">
           <span className="hero-chip">
             <span className="hero-chip-rotor">
