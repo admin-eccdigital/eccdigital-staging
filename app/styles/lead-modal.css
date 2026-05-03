@@ -5,8 +5,25 @@
 @keyframes lfPop{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:780px){.lf-modal{grid-template-columns:1fr;max-height:calc(100vh - 16px)}.lf-side{display:none}}
 
-.lf-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:9999px;border:1px solid rgba(15,23,42,.10);background:rgba(255,255,255,.92);color:#475569;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .2s}
+.lf-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:9999px;border:1px solid rgba(15,23,42,.10);background:rgba(255,255,255,.95);color:#475569;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .2s;box-shadow:0 4px 12px rgba(15,23,42,.10)}
 .lf-close:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+.lf-close:focus-visible{outline:3px solid rgba(255,138,77,.6);outline-offset:2px}
+@media(max-width:780px){
+  /* On mobile the modal fills almost the whole screen, so the close button
+     must be 44+ tap area, high-contrast, and stay above any scrolled content */
+  .lf-close{
+    position:fixed;
+    top:max(14px,env(safe-area-inset-top, 14px));
+    right:14px;
+    width:44px;height:44px;
+    background:#0f172a;color:#fff;
+    border-color:rgba(255,255,255,.20);
+    box-shadow:0 6px 20px rgba(0,0,0,.40);
+    z-index:1100;
+  }
+  .lf-close:hover{background:#1e293b}
+  .lf-close svg{width:20px;height:20px}
+}
 
 /* SIDE */
 .lf-side{position:relative;background:#0a0a0a;color:#fff;padding:36px 32px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;min-height:520px}
