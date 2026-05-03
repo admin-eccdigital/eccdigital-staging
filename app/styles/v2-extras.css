@@ -190,3 +190,44 @@
 .cta{overflow:hidden}
 .footer{overflow:hidden}
 .astat--hero{overflow:hidden}
+
+/* Portfolio section (03) — tinted slate gradient + faint grid so the
+   white cards visually pop against a non-white surround. */
+.light#reference{
+  position:relative;
+  background:
+    radial-gradient(ellipse 80% 50% at 0% 0%, rgba(148,163,184,.16), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(255,138,77,.05), transparent 60%),
+    linear-gradient(180deg, #eef2f7 0%, #f4f6fa 50%, #eaeef4 100%);
+}
+.light#reference::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(15,23,42,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,.045) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  z-index:0;
+}
+.light#reference > *{position:relative;z-index:1}
+.light#reference .light-dots{display:none}
+
+/* Portfolio cards — bigger lift, more layered shadow now that they sit
+   on a tinted bg. White cards punch out cleanly. */
+#reference .case-card{
+  background:#fff;
+  border:1px solid rgba(15,23,42,.10);
+  box-shadow:
+    0 1px 2px rgba(15,23,42,.04),
+    0 6px 14px -8px rgba(15,23,42,.16),
+    0 18px 36px -16px rgba(15,23,42,.28);
+}
+#reference .case-card:hover{
+  box-shadow:
+    0 1px 2px rgba(15,23,42,.04),
+    0 8px 18px -8px rgba(15,23,42,.18),
+    0 28px 60px -18px rgba(255,138,77,.32),
+    0 24px 48px -20px rgba(15,23,42,.36);
+  border-color:rgba(15,23,42,.14);
+}
