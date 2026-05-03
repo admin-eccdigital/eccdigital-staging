@@ -74,27 +74,45 @@ export function About() {
                   Klienti, kteří s námi zůstávají roky — ne kampaně, ale partnerství.
                 </div>
               </div>
-              <div className="astat astat--row">
-                <div className="astat-cell">
-                  <div className="astat-num">
+              <div className="astat-mini-grid">
+                <div className="astat-mini">
+                  <div className="astat-mini-ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <div className="astat-mini-num">
                     <CountUp end={10} />
                     <span>+</span>
                   </div>
-                  <div className="astat-lbl">let na trhu</div>
+                  <div className="astat-mini-lbl">let na trhu</div>
                 </div>
-                <div className="astat-cell">
-                  <div className="astat-num">
+                <div className="astat-mini">
+                  <div className="astat-mini-ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
+                    </svg>
+                  </div>
+                  <div className="astat-mini-num">
                     <CountUp end={300} />
                     <span>+</span>
                   </div>
-                  <div className="astat-lbl">projektů</div>
+                  <div className="astat-mini-lbl">projektů</div>
                 </div>
-                <div className="astat-cell">
-                  <div className="astat-num">
+                <div className="astat-mini">
+                  <div className="astat-mini-ico" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                  </div>
+                  <div className="astat-mini-num">
                     <CountUp end={150} />
                     <span>+</span>
                   </div>
-                  <div className="astat-lbl">webů pod správou</div>
+                  <div className="astat-mini-lbl">webů pod správou</div>
                 </div>
               </div>
             </div>

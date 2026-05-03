@@ -342,3 +342,81 @@
   .cookiebar-actions{flex-direction:column;align-items:stretch}
   .cb-btn{width:100%}
 }
+
+/* ============ About — mini stat cards (replaces .astat--row) ============
+   Three small dark cards that rhyme with the big .astat--hero above. */
+.astat-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.astat-mini{
+  position:relative;overflow:hidden;
+  border-radius:18px;
+  background:linear-gradient(180deg,#0f172a 0%,#0a0e18 100%);
+  border:1px solid rgba(255,138,77,.22);
+  padding:22px 18px 18px;
+  color:#fff;
+  box-shadow:
+    0 1px 2px rgba(255,138,77,.08),
+    0 12px 32px -16px rgba(255,138,77,.30),
+    0 18px 40px -22px rgba(15,23,42,.40);
+  transition:transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+}
+.astat-mini::before{
+  content:"";position:absolute;top:-20%;right:-25%;width:75%;height:140%;
+  background:radial-gradient(closest-side,rgba(255,138,77,.30),transparent);
+  pointer-events:none;
+}
+.astat-mini::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(ellipse 60% 60% at 100% 0%,black 5%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 100% 0%,black 5%,transparent 70%);
+}
+.astat-mini > *{position:relative;z-index:1}
+.astat-mini:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 1px 2px rgba(255,138,77,.10),
+    0 18px 44px -16px rgba(255,138,77,.45),
+    0 24px 56px -22px rgba(15,23,42,.50);
+}
+.astat-mini-ico{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(255,138,77,.14);
+  border:1px solid rgba(255,138,77,.30);
+  color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;
+}
+.astat-mini-num{
+  font-size:clamp(38px,4vw,52px);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-0.025em;
+  background:linear-gradient(180deg,#fff 0%,oklch(0.88 0.12 55) 50%,var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 16px rgba(255,138,77,.25));
+  font-feature-settings:"tnum";
+  display:inline-flex;align-items:baseline;
+}
+.astat-mini-num span{
+  font-size:.55em;font-weight:700;
+  color:rgba(255,255,255,.55);
+  -webkit-text-fill-color:rgba(255,255,255,.55);
+  margin-left:2px;
+  filter:none;
+}
+.astat-mini-lbl{
+  font-size:13px;
+  color:rgba(255,255,255,.62);
+  margin-top:8px;
+  line-height:1.4;
+  font-weight:500;
+}
+@media(max-width:560px){
+  .astat-mini-grid{grid-template-columns:1fr;gap:8px}
+  .astat-mini{padding:18px 18px 16px}
+  .astat-mini-ico{width:32px;height:32px;margin-bottom:10px}
+}
