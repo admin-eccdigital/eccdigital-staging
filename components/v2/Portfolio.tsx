@@ -18,7 +18,7 @@ const PROJECTS: Project[] = [
     desc: "Web, výkonnostní kampaně a strategie pro instalátora tepelných čerpadel.",
     services: ["Web", "PPC", "Strategie"],
     palette: ["oklch(0.72 0.14 230)", "oklch(0.85 0.10 200)"],
-    image: "/eccdigital-staging/images/portfolio/klimahome-cz.jpg",
+    image: "/eccdigital-staging/images/portfolio/klimahome-cz.webp",
     url: "https://klimahome.cz",
   },
   {
@@ -27,7 +27,7 @@ const PROJECTS: Project[] = [
     desc: "Trojjazyčný web ve spolupráci s nizozemským studiem pro mezinárodní brand.",
     services: ["Web", "3 jazyky", "Mezinárodní"],
     palette: ["oklch(0.55 0.10 60)", "oklch(0.72 0.12 50)"],
-    image: "/eccdigital-staging/images/portfolio/escoflooring-com.jpg",
+    image: "/eccdigital-staging/images/portfolio/escoflooring-com.webp",
     url: "https://escoflooring.com",
   },
   {
@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     desc: "Web a kompletní řízení online marketingu pro největšího EU distributora Telesis — od strategie po reporting.",
     services: ["Web", "PPC", "Analytika"],
     palette: ["oklch(0.65 0.18 350)", "oklch(0.78 0.14 320)"],
-    image: "/eccdigital-staging/images/portfolio/marksys-cz.jpg",
+    image: "/eccdigital-staging/images/portfolio/marksys-cz.webp",
     url: "https://marksys.cz",
   },
   {
@@ -45,7 +45,7 @@ const PROJECTS: Project[] = [
     desc: "PPC kampaně a řízení online marketingu pro český e-shop.",
     services: ["PPC", "Srovnávače", "Reporting"],
     palette: ["oklch(0.70 0.16 145)", "oklch(0.82 0.12 130)"],
-    image: "/eccdigital-staging/images/portfolio/florea-cz.jpg",
+    image: "/eccdigital-staging/images/portfolio/florea-cz.webp",
     url: "https://florea.cz",
   },
   {
@@ -54,7 +54,7 @@ const PROJECTS: Project[] = [
     desc: "Cesta od tvorby webu k celostátním zakázkám — kompletní digitální růst.",
     services: ["Web", "Strategie", "PPC"],
     palette: ["oklch(0.60 0.15 30)", "oklch(0.75 0.13 50)"],
-    image: "/eccdigital-staging/images/portfolio/profikas-cz.jpg",
+    image: "/eccdigital-staging/images/portfolio/profikas-cz.webp",
     url: "https://profikas.cz",
   },
   {
@@ -63,7 +63,7 @@ const PROJECTS: Project[] = [
     desc: "Landing page pro mezinárodní hotelový řetězec, realizovaná s chorvatskou partnerskou agenturou S.T.A.R. Digital.",
     services: ["Landing page", "Mezinárodní", "Partnerství"],
     palette: ["oklch(0.68 0.14 250)", "oklch(0.80 0.11 220)"],
-    image: "/eccdigital-staging/images/portfolio/dovolena-zadar-cz.jpg",
+    image: "/eccdigital-staging/images/portfolio/dovolena-zadar-cz.webp",
     url: "https://dovolena-zadar.cz",
   },
 ]

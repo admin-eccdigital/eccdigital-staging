@@ -8,7 +8,7 @@ export function Footer() {
       <div className="footer-grid">
         <div className="footer-brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={LOGO} alt="ECC Digital" />
+          <img src={LOGO} alt="ECC Digital" width={176} height={40} loading="lazy" decoding="async" />
           <p>Educate · Create · Care Digital — strategický partner pro váš digitální růst od roku 2015.</p>
           <div className="footer-social">
             <a href="#" aria-label="Facebook">

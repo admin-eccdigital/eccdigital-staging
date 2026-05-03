@@ -203,7 +203,7 @@ export function StructuredData() {
         worksFor: { "@id": `${SITE_URL}/#organization` },
         telephone: "+420 724 443 968",
         email: "admin@eccdigital.cz",
-        image: `${SITE_URL}/images/team/petr-stepan-circle.png`,
+        image: `${SITE_URL}/images/team/petr-stepan-circle.webp`,
         knowsAbout: [
           "PPC reklama",
           "Google Ads",

@@ -1,7 +1,7 @@
 "use client"
 import { ArrowRight, Reveal } from "./shared"
 
-const PHOTO = "/eccdigital-staging/images/team/petr-stepan-circle.png"
+const PHOTO = "/eccdigital-staging/images/team/petr-stepan-circle.webp"
 
 export function CTA() {
   return (
@@ -37,7 +37,7 @@ export function CTA() {
           <div className="cta-contact">
             <div className="cta-contact-photo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={PHOTO} alt="Petr Štěpán" />
+              <img src={PHOTO} alt="Ing. Petr Štěpán — Vedoucí výkonnostních kampaní a analytiky, ECC Digital" width={96} height={96} loading="lazy" decoding="async" />
             </div>
             <div className="cta-contact-body">
               <div className="cta-contact-eyebrow">Volejte přímo</div>

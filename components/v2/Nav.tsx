@@ -47,7 +47,7 @@ export function Nav() {
         <div className="nav">
           <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={LOGO} alt="ECC Digital" />
+            <img src={LOGO} alt="ECC Digital" width={176} height={40} fetchPriority="high" decoding="async" />
           </div>
           <div className="nav-links">
             {items.map((i) => (

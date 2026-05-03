@@ -305,10 +305,34 @@ export function ToolsCanvas() {
 
       rafRef.current = requestAnimationFrame(step)
     }
-    rafRef.current = requestAnimationFrame(step)
+
+    // Only animate when the canvas is in the viewport — saves CPU/battery
+    // when the user is looking at other sections of the page.
+    let isVisible = false
+    const startLoop = () => {
+      if (rafRef.current == null) rafRef.current = requestAnimationFrame(step)
+    }
+    const stopLoop = () => {
+      if (rafRef.current != null) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+    }
+    const visObs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          isVisible = e.isIntersecting
+          if (isVisible) startLoop()
+          else stopLoop()
+        }
+      },
+      { threshold: 0.05 },
+    )
+    visObs.observe(canvas)
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      stopLoop()
+      visObs.disconnect()
       ro.disconnect()
       canvas.removeEventListener("mousemove", onMove)
       canvas.removeEventListener("mouseleave", onLeave)
