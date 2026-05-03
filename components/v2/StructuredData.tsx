@@ -20,9 +20,9 @@ const SERVICES = [
       "Správa reklamy na Meta Ads, Google Ads, Sklik, TikTok Ads, LinkedIn Ads, Microsoft Ads a srovnávačích Heureka / Zboží.cz.",
   },
   {
-    name: "Tvorba webů a e-shopů",
+    name: "Tvorba webů a landing pages",
     description:
-      "Návrh a vývoj firemních webů a e-shopů na WordPress, WooCommerce, Shoptetu a Next.js — včetně vícejazyčných řešení.",
+      "Návrh a vývoj firemních webů a landing pages na WordPress, Next.js a vlastních šablonách — včetně vícejazyčných řešení.",
   },
   {
     name: "Digitální strategie",
@@ -181,7 +181,7 @@ export function StructuredData() {
         url: SITE_URL,
         name: "ECC Digital — Strategický partner pro digitální projekty",
         description:
-          "Česká digitální agentura. Správa Meta, Google Ads, Sklik, srovnávačů. Tvorba webů a e-shopů.",
+          "Česká digitální agentura. Správa Meta, Google Ads, Sklik, srovnávačů. Tvorba webů, landing pages, analytika a školení.",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
         inLanguage: "cs-CZ",

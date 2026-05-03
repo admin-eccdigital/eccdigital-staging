@@ -423,75 +423,104 @@
 
 /* ============ Floating actions: side CTA + scroll-to-top ============ */
 
-/* Vertical sticky CTA tab on the right edge — visible all sizes.
-   On desktop the text rests collapsed and slides out on hover.
-   On mobile it's permanently visible as an icon-only pill. */
-.fab-side{
-  position:fixed;right:0;top:55%;z-index:90;
-  display:inline-flex;align-items:center;gap:8px;
+/* Inquiry CTA — labelled pill on every viewport.
+   Desktop: anchored to the bottom-right (out of the reading flow), full label.
+   Mobile : full-width-feeling pill at bottom, label always visible.
+   Icon is a "document with lines" — clear inquiry/quote affordance, NOT chat. */
+.fab-cta{
+  position:fixed;right:18px;bottom:18px;z-index:90;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 14px 12px 12px;
   background:linear-gradient(135deg,var(--accent),var(--accent-2));
   color:#fff;
-  border:0;border-radius:18px 0 0 18px;
-  padding:14px 16px 14px 18px;
-  font-family:inherit;font-weight:700;font-size:13px;
-  letter-spacing:.02em;
+  border:0;border-radius:9999px;
+  font-family:inherit;font-weight:600;font-size:14px;
+  letter-spacing:.005em;
   cursor:pointer;
-  box-shadow:0 14px 32px -8px rgba(255,138,77,.55),0 8px 18px -8px rgba(0,0,0,.35);
-  transform:translateY(-50%);
-  transition:transform .35s var(--ease-out),box-shadow .25s var(--ease-out),right .35s var(--ease-out);
-  overflow:hidden;
-  writing-mode:horizontal-tb;
+  box-shadow:
+    0 14px 32px -10px rgba(255,138,77,.55),
+    0 6px 14px -6px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.20);
+  transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out);
+  overflow:visible;
+  white-space:nowrap;
 }
-.fab-side:hover{transform:translateY(-50%) translateX(-2px);box-shadow:0 18px 40px -10px rgba(255,138,77,.7),0 10px 22px -8px rgba(0,0,0,.45)}
-.fab-side:focus-visible{outline:3px solid rgba(255,255,255,.5);outline-offset:2px}
-.fab-side-text{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-.fab-side-pulse{
-  position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  opacity:.55;
-  animation:fabPulse 2.4s ease-in-out infinite;
-  z-index:-1;
+.fab-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 20px 44px -12px rgba(255,138,77,.70),
+    0 10px 20px -8px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.25);
 }
-@keyframes fabPulse{
-  0%,100%{transform:scale(1);opacity:.4}
-  50%{transform:scale(1.08);opacity:0}
+.fab-cta:active{transform:translateY(0)}
+.fab-cta:focus-visible{outline:3px solid rgba(255,255,255,.55);outline-offset:3px}
+.fab-cta-ico{
+  width:32px;height:32px;flex-shrink:0;
+  background:rgba(255,255,255,.18);
+  border-radius:9999px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;
+}
+.fab-cta-text{display:inline-flex;align-items:center;gap:4px;line-height:1}
+.fab-cta-text strong{font-weight:800;letter-spacing:.01em}
+.fab-cta-arrow{
+  width:24px;height:24px;flex-shrink:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  opacity:.85;
+  transition:transform .25s var(--ease-out),opacity .2s;
+}
+.fab-cta:hover .fab-cta-arrow{transform:translateX(3px);opacity:1}
+
+/* Soft, slow ring pulse — discoverable but not distracting like the old tab */
+.fab-cta::after{
+  content:"";
+  position:absolute;inset:-4px;border-radius:inherit;
+  border:2px solid var(--accent);
+  opacity:0;
+  animation:fabRing 3s ease-out infinite;
+  pointer-events:none;
+}
+@keyframes fabRing{
+  0%{transform:scale(.92);opacity:.55}
+  70%{transform:scale(1.20);opacity:0}
+  100%{transform:scale(1.20);opacity:0}
 }
 
-/* Mobile: collapse to icon-only chevron-pill on the side.
-   Tap target stays 44×44 minimum. */
+/* Mobile — slightly larger tap target, label stays visible (compact) */
 @media(max-width:680px){
-  .fab-side{
-    padding:14px 14px 14px 16px;border-radius:16px 0 0 16px;
-    top:auto;bottom:88px;transform:none;
+  .fab-cta{
+    bottom:16px;right:16px;
+    padding:11px 14px 11px 11px;
+    font-size:13.5px;
   }
-  .fab-side:hover{transform:translateX(-2px)}
-  .fab-side-text span{display:none}
-  .fab-side-text{gap:0}
-  .fab-side-text svg{width:18px;height:18px}
+  .fab-cta-ico{width:30px;height:30px}
+  .fab-cta-arrow{display:none}
 }
 
-/* Scroll-to-top */
+/* Hide on very small heights (e.g. landscape phones) so it doesn't cover content */
+@media(max-height:520px){.fab-cta{display:none}}
+
+/* Scroll-to-top — sits *above* the inquiry FAB so they stack visibly without overlap */
 .fab-top{
-  position:fixed;right:18px;bottom:18px;z-index:90;
-  width:44px;height:44px;
+  position:fixed;right:18px;bottom:78px;z-index:90;
+  width:42px;height:42px;
   display:inline-flex;align-items:center;justify-content:center;
   background:rgba(15,18,24,.85);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   color:#fff;
-  border:1px solid rgba(255,138,77,.35);
+  border:1px solid rgba(255,255,255,.14);
   border-radius:9999px;
   cursor:pointer;font-family:inherit;
-  box-shadow:0 8px 22px -6px rgba(0,0,0,.45),0 4px 12px -4px rgba(255,138,77,.3);
+  box-shadow:0 8px 22px -6px rgba(0,0,0,.45);
   opacity:0;visibility:hidden;transform:translateY(8px);
   transition:opacity .25s,visibility .25s,transform .25s var(--ease-out),background .2s,border-color .2s;
 }
 .fab-top.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-.fab-top:hover{background:var(--accent);border-color:var(--accent)}
+.fab-top:hover{background:rgba(15,18,24,.95);border-color:rgba(255,138,77,.35)}
 .fab-top:focus-visible{outline:3px solid rgba(255,138,77,.6);outline-offset:2px}
 
-/* On phones, push scroll-to-top a bit higher to clear the side fab. */
 @media(max-width:680px){
-  .fab-top{bottom:24px;right:14px;width:42px;height:42px}
+  .fab-top{bottom:74px;right:14px;width:40px;height:40px}
 }
 
 /* ============ Services (02) cards — punchier default + new hover ============

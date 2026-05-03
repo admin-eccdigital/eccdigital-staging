@@ -12,7 +12,7 @@ import "./styles/lead-modal.css"
 export const metadata: Metadata = {
   title: "ECC Digital — Strategický partner pro digitální projekty",
   description:
-    "Česká digitální agentura. Správa Meta, Google Ads, Sklik, srovnávačů. Tvorba webů a e-shopů.",
+    "Česká digitální agentura. Správa Meta, Google Ads, Sklik, srovnávačů. Tvorba webů, landing pages, analytika a školení.",
   icons: {
     icon: "/eccdigital-staging/images/favicon-light.png",
   },
