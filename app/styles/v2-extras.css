@@ -211,13 +211,13 @@
     linear-gradient(180deg, #eef2f7 0%, #f4f6fa 50%, #eaeef4 100%);
 }
 .light#reference::before{
-  content:"";position:absolute;top:-5%;right:-8%;width:50%;height:70%;pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(15,23,42,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,23,42,.05) 1px, transparent 1px);
+    linear-gradient(rgba(15,23,42,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,.045) 1px, transparent 1px);
   background-size:48px 48px;
-  mask-image:radial-gradient(ellipse 55% 55% at 70% 30%, black 5%, transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse 55% 55% at 70% 30%, black 5%, transparent 70%);
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
   z-index:0;
 }
 .light#reference > *{position:relative;z-index:1}
