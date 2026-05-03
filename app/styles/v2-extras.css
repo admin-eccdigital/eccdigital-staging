@@ -493,3 +493,56 @@
 @media(max-width:680px){
   .fab-top{bottom:24px;right:14px;width:42px;height:42px}
 }
+
+/* ============ Services (02) cards — punchier default + new hover ============
+   Hover-state look from the v1 design becomes the resting state, hover then
+   adds a deeper lift + warm tint + animated icon. */
+#sluzby .svc-card{
+  border:1px solid #cbd5e1 !important;
+  box-shadow:
+    0 1px 2px rgba(15,23,42,.05),
+    0 12px 28px -12px rgba(15,23,42,.18) !important;
+  background:linear-gradient(180deg,#ffffff 0%,#fafbfd 100%);
+}
+#sluzby .svc-card::before{
+  transform:scaleX(1) !important;
+  height:4px !important;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2)) !important;
+  box-shadow:0 0 16px rgba(255,138,77,.35);
+}
+#sluzby .svc-ic{
+  background:linear-gradient(135deg,var(--accent),var(--accent-2)) !important;
+  color:#fff !important;
+  box-shadow:0 6px 18px rgba(226,114,74,.30) !important;
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out);
+}
+#sluzby .svc-card .arrow{
+  opacity:1 !important;
+  transform:none !important;
+  color:var(--accent-text);
+  transition:transform .35s var(--ease-out),color .25s;
+}
+#sluzby .svc-card .arrow svg{transition:transform .3s var(--ease-out)}
+
+/* Hover — add a different layer of energy */
+#sluzby .svc-card:hover{
+  transform:translateY(-8px) !important;
+  border-color:rgba(255,138,77,.35) !important;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%,rgba(255,138,77,.10),transparent 70%),
+    linear-gradient(180deg,#ffffff 0%,#fafbfd 100%) !important;
+  box-shadow:
+    0 4px 8px rgba(15,23,42,.06),
+    0 28px 56px -16px rgba(255,138,77,.40),
+    0 28px 60px -22px rgba(15,23,42,.30) !important;
+}
+#sluzby .svc-card:hover::before{
+  height:5px !important;
+  box-shadow:0 0 24px rgba(255,138,77,.55) !important;
+}
+#sluzby .svc-card:hover .svc-ic{
+  transform:scale(1.08) rotate(-3deg);
+  box-shadow:0 12px 28px rgba(226,114,74,.45) !important;
+}
+#sluzby .svc-card:hover .arrow{color:var(--accent)}
+#sluzby .svc-card:hover .arrow svg{transform:translateX(6px)}
