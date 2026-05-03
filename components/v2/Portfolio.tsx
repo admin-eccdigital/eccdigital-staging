@@ -31,11 +31,13 @@ const PROJECTS: Project[] = [
     url: "https://escoflooring.com",
   },
   {
-    name: "Marcsis",
-    tag: "Online marketing",
-    desc: "Web a kompletní řízení online marketingu — od strategie po reporting.",
+    name: "Marksys",
+    tag: "Značicí technologie · B2B",
+    desc: "Web a kompletní řízení online marketingu pro největšího EU distributora Telesis — od strategie po reporting.",
     services: ["Web", "PPC", "Analytika"],
     palette: ["oklch(0.65 0.18 350)", "oklch(0.78 0.14 320)"],
+    image: "/eccdigital-staging/images/portfolio/marksys-cz.jpg",
+    url: "https://marksys.cz",
   },
   {
     name: "Florea.cz",
