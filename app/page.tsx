@@ -9,6 +9,7 @@ import { CTA } from "@/components/v2/CTA"
 import { Footer } from "@/components/v2/Footer"
 import { LeadModal } from "@/components/v2/LeadModal"
 import { CookieBar } from "@/components/v2/CookieBar"
+import { FloatingActions } from "@/components/v2/FloatingActions"
 
 export default function HomePage() {
   return (
@@ -29,6 +30,7 @@ export default function HomePage() {
       <CTA />
       <Footer />
       <LeadModal />
+      <FloatingActions />
       <CookieBar />
     </>
   )
