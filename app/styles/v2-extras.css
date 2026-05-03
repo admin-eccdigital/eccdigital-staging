@@ -471,20 +471,30 @@
 }
 .fab-cta:hover .fab-cta-arrow{transform:translateX(3px);opacity:1}
 
-/* Soft, slow ring pulse — discoverable but not distracting like the old tab */
+/* Soft, slow ring pulse — discoverable but not distracting */
 .fab-cta::after{
   content:"";
-  position:absolute;inset:-4px;border-radius:inherit;
-  border:2px solid var(--accent);
+  position:absolute;inset:-3px;border-radius:inherit;
+  border:1.5px solid var(--accent);
   opacity:0;
-  animation:fabRing 3s ease-out infinite;
+  animation:fabRing 5.5s ease-out infinite;
+  animation-delay:1.5s;
   pointer-events:none;
 }
 @keyframes fabRing{
-  0%{transform:scale(.92);opacity:.55}
-  70%{transform:scale(1.20);opacity:0}
-  100%{transform:scale(1.20);opacity:0}
+  0%{transform:scale(.94);opacity:0}
+  10%{transform:scale(.94);opacity:.30}
+  55%{transform:scale(1.16);opacity:0}
+  100%{transform:scale(1.16);opacity:0}
 }
+/* No pulse on mobile — persistent label is enough; ring read as too jumpy */
+@media(max-width:680px){.fab-cta::after{display:none}}
+/* Hide inquiry FAB and scroll-top while mobile burger menu is open —
+   menu has its own Audit CTA, no need to compete for attention */
+body:has(.mobile-menu[data-open="1"]) .fab-cta,
+body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
+/* Reduced motion: kill the ring entirely */
+@media(prefers-reduced-motion:reduce){.fab-cta::after{display:none}}
 
 /* Mobile — slightly larger tap target, label stays visible (compact) */
 @media(max-width:680px){
