@@ -41,7 +41,7 @@ export function CTA() {
             </div>
             <div className="cta-contact-body">
               <div className="cta-contact-eyebrow">Volejte přímo</div>
-              <div className="cta-contact-name">Petr Štěpán</div>
+              <div className="cta-contact-name">Ing. Petr Štěpán</div>
               <div className="cta-contact-role">Vedoucí výkonnostních kampaní a analytiky</div>
               <div className="cta-contact-links">
                 <a href="tel:+420724443968" className="cta-contact-phone">
