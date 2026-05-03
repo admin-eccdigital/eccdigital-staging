@@ -49,6 +49,22 @@
 
 /* Tools canvas (dark section) */
 .tools-sec{position:relative;z-index:2;background:#0a0a0a;padding:96px 24px 80px;overflow:hidden}
+.tools-sec::before{
+  content:"";position:absolute;top:-5%;left:-8%;width:55%;height:80%;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 60% 60% at 30% 30%,black 5%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 30% 30%,black 5%,transparent 70%);
+  z-index:0;
+}
+.tools-sec::after{
+  content:"";position:absolute;top:-15%;left:-15%;width:50%;height:80%;
+  background:radial-gradient(closest-side,rgba(255,138,77,.12),transparent);
+  pointer-events:none;z-index:0;
+}
+.tools-sec > *{position:relative;z-index:1}
 .tools-sec .testim-grid-bg{position:absolute;inset:0;opacity:.06;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
 .tools-sec .section-head{margin-bottom:40px}
 .tools-sec .h2-light{font-size:clamp(30px,4.5vw,54px);font-weight:300;color:#fff;margin:0 0 18px;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance}
