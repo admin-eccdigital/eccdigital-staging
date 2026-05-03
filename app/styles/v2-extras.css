@@ -150,14 +150,24 @@
    Applied to dark sections — CTA and Footer.
    ::before = 40px grid lines softly masked
    ::after  = warm orange radial glow */
-.cta::before, .footer::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+.cta::before{
+  content:"";position:absolute;top:-5%;right:-10%;width:55%;height:90%;pointer-events:none;
   background-image:
     linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:40px 40px;
-  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black,transparent);
-  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,black,transparent);
+  mask-image:radial-gradient(ellipse 60% 60% at 70% 30%,black 5%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 70% 30%,black 5%,transparent 70%);
+  z-index:0;
+}
+.footer::before{
+  content:"";position:absolute;bottom:-20%;left:-5%;width:50%;height:140%;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 60% 50% at 30% 60%,black 5%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 50% at 30% 60%,black 5%,transparent 70%);
   z-index:0;
 }
 .cta::after{
@@ -175,13 +185,13 @@
 /* About hero stat — re-use the same pattern on the dark .astat--hero card
    (matches LeadModal aside for visual rhyme) */
 .astat--hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
+  content:"";position:absolute;top:-10%;left:-5%;width:55%;height:90%;pointer-events:none;
   background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:32px 32px;
-  mask-image:radial-gradient(ellipse 80% 80% at 30% 70%,black,transparent);
-  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 30% 70%,black,transparent);
+  mask-image:radial-gradient(ellipse 50% 50% at 30% 70%,black 5%,transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 30% 70%,black 5%,transparent 70%);
   z-index:0;
 }
 .astat--hero > *{position:relative;z-index:1}
@@ -201,13 +211,13 @@
     linear-gradient(180deg, #eef2f7 0%, #f4f6fa 50%, #eaeef4 100%);
 }
 .light#reference::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+  content:"";position:absolute;top:-5%;right:-8%;width:50%;height:70%;pointer-events:none;
   background-image:
-    linear-gradient(rgba(15,23,42,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,23,42,.045) 1px, transparent 1px);
+    linear-gradient(rgba(15,23,42,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,.05) 1px, transparent 1px);
   background-size:48px 48px;
-  mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
-  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  mask-image:radial-gradient(ellipse 55% 55% at 70% 30%, black 5%, transparent 70%);
+  -webkit-mask-image:radial-gradient(ellipse 55% 55% at 70% 30%, black 5%, transparent 70%);
   z-index:0;
 }
 .light#reference > *{position:relative;z-index:1}
