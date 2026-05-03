@@ -70,7 +70,7 @@ export function Services() {
             Co děláme
           </div>
           <h2 className="h2">
-            Kompletní digitální marketing <span className="grad">pod jednou střechou</span>
+            Kompletní digitální marketing <span className="accent">pod jednou střechou</span>
           </h2>
           <p className="lead-light">
             Od strategie a výkonnostní reklamy přes weby a analytiku až po školení vašeho týmu. Vše propojeně, vše

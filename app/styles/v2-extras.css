@@ -131,3 +131,17 @@
 .nav-phone:hover{color:var(--accent);border-color:rgba(255,138,77,.4);background:rgba(255,138,77,.08)}
 .nav-phone svg{color:var(--accent)}
 @media (min-width:1100px){.nav-phone{display:inline-flex}}
+
+/* Services section (02) — soft gradient backdrop with warm-orange hint
+   Stays subtle vs the otherwise white "light" sections so it reads as
+   a distinct chapter without breaking the rhythm. */
+.light#sluzby{
+  background:
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(255,138,77,.06), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(148,163,184,.10), transparent 60%),
+    linear-gradient(180deg, #f8fafc 0%, #fdfdfe 50%, #f6f7f9 100%);
+}
+.light#sluzby .light-dots{opacity:.04}
+/* Service cards lifted slightly to read against tinted bg */
+#sluzby .svc-card{box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 22px -14px rgba(15,23,42,.10)}
+#sluzby .svc-card:hover{box-shadow:0 4px 8px rgba(15,23,42,.06),0 24px 44px -18px rgba(255,138,77,.18),0 18px 40px -22px rgba(15,23,42,.16)}
