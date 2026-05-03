@@ -30,7 +30,6 @@ export function Nav() {
     { name: "Reference", href: "#reference" },
     { name: "O nás", href: "#o-nas" },
     { name: "Blog", href: "#blog" },
-    { name: "Banner Generator", href: "/eccdigital-staging/banner-generator/", external: true },
   ]
   const go = (href: string, external?: boolean) => {
     setOpen(false)
