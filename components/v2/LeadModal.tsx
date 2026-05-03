@@ -56,7 +56,7 @@ export function LeadModal() {
     ? "Podíváme se na váš web, kampaně a měření. Výstup do 10 dní, bez závazku."
     : "Probereme vaši situaci a navrhneme další kroky. Bez prezentací, bez závazku."
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErr("")
     if (!data.name.trim() || !data.email.trim()) {
@@ -67,11 +67,35 @@ export function LeadModal() {
       setErr("Zkontrolujte e-mailovou adresu.")
       return
     }
+    if ((data as any).company) return // honeypot
     setBusy(true)
-    setTimeout(() => {
-      setBusy(false)
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/admin@eccdigital.cz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `[ECC Digital] ${isAudit ? "Audit zdarma" : "Konzultace"} — ${data.name}`,
+          _template: "table",
+          _captcha: "false",
+          _replyto: data.email,
+          Typ: isAudit ? "Audit zdarma" : "Konzultace",
+          Jméno: data.name,
+          Email: data.email,
+          Telefon: data.phone || "—",
+          Web: data.web || "—",
+          Odesláno: new Date().toLocaleString("cs-CZ"),
+        }),
+      })
+      const json = await res.json().catch(() => ({}))
+      if (!res.ok || json.success === "false") {
+        throw new Error(json.message || "Server error")
+      }
       setStep("sent")
-    }, 700)
+    } catch (e: any) {
+      setErr("Nepodařilo se odeslat. Zkuste to znovu, nebo nám napište přímo na admin@eccdigital.cz.")
+    } finally {
+      setBusy(false)
+    }
   }
 
   return (
@@ -126,6 +150,15 @@ export function LeadModal() {
                     <input type="text" value={data.web} onChange={(e) => setData((d) => ({ ...d, web: e.target.value }))} placeholder="firma.cz" />
                   </label>
                 </div>
+                {/* honeypot — hidden from real users, bots fill it */}
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                  onChange={(e) => setData((d) => ({ ...d, company: e.target.value } as any))}
+                />
                 {err && <div className="lf-err">{err}</div>}
                 <button className="lf-submit" type="submit" disabled={busy}>
                   {busy ? "Odesílám…" : isAudit ? "Chci audit zdarma" : "Domluvit konzultaci"}
