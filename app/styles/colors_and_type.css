@@ -1,0 +1,236 @@
+/* ============================================================
+   ECC Digital — Colors & Type
+   Source: admin-eccdigital/eccdigital-staging app/globals.css
+   Theme: dark-only (the website forces .dark on <html>)
+   ============================================================ */
+
+:root {
+  /* -------------------- Core palette (OKLCH) -------------------- */
+  /* Raw brand neutrals — near-black base, soft whites */
+  --background: oklch(0.05 0 0);      /* #0d0d0d-ish, page bg */
+  --foreground: oklch(0.98 0 0);      /* near-white, body text */
+  --card: oklch(0.08 0 0);            /* elevated surfaces */
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.08 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.15 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.12 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.15 0 0);
+  --accent-foreground: oklch(0.98 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.15 0 0);
+
+  /* Brand primary — vivid green (used for rings & chart-1) */
+  --primary: oklch(0.7 0.15 142);
+  --primary-foreground: oklch(0.05 0 0);
+  --ring: oklch(0.7 0.15 142);
+
+  /* Destructive */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Chart / data-viz palette (also used as vibrant accents) */
+  --chart-1: oklch(0.7 0.15 142);     /* green */
+  --chart-2: oklch(0.6 0.118 184.704);/* teal */
+  --chart-3: oklch(0.5 0.07 227.392); /* blue */
+  --chart-4: oklch(0.8 0.189 84.429); /* amber */
+  --chart-5: oklch(0.75 0.188 70.08); /* orange */
+
+  /* Aurora gradient stops — slate tones, animated WebGL background */
+  --aurora-1: #475569;
+  --aurora-2: #64748b;
+  --aurora-3: #475569;
+
+  /* Slate scale (from Tailwind, used heavily on light service sections) */
+  --slate-50:  #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  /* Glass surfaces (nav + footer radial) */
+  --glass-bg: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.20);
+  --glass-blur: 12px;
+
+  /* Radii (base 0.75rem) */
+  --radius: 0.75rem;
+  --radius-sm: calc(var(--radius) - 4px); /* 8px */
+  --radius-md: calc(var(--radius) - 2px); /* 10px */
+  --radius-lg: var(--radius);             /* 12px */
+  --radius-xl: calc(var(--radius) + 4px); /* 16px */
+  --radius-2xl: 1rem;                      /* 16px */
+  --radius-3xl: 1.5rem;                    /* 24px */
+  --radius-pill: 9999px;
+
+  /* Spacing scale (Tailwind-aligned, 4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.4);
+  --shadow-2xl: 0 25px 50px -12px rgba(0,0,0,0.6);
+  --shadow-glow-green: 0 0 24px rgba(74, 222, 128, 0.35);
+
+  /* -------------------- Typography -------------------- */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-script: "Dancing Script", cursive;     /* decorative, rarely used */
+  --font-handwriting: "Caveat", cursive;        /* decorative, rarely used */
+
+  /* Semantic type tokens — match the site's hero/headings/body scale */
+  --type-display-size: clamp(2.25rem, 6vw, 4.5rem);   /* hero h1 — text-3xl → text-7xl */
+  --type-display-weight: 700;
+  --type-display-line: 1.05;
+  --type-display-tracking: -0.02em;
+
+  --type-h1-size: clamp(2rem, 5vw, 3.75rem);
+  --type-h1-weight: 700;
+  --type-h1-line: 1.1;
+
+  --type-h2-size: clamp(1.5rem, 3.5vw, 3rem);          /* section h2 */
+  --type-h2-weight: 700;
+  --type-h2-line: 1.15;
+
+  --type-h3-size: 1.5rem;                               /* card titles */
+  --type-h3-weight: 700;
+
+  --type-eyebrow-size: 0.875rem;                        /* pill labels */
+  --type-eyebrow-weight: 500;
+  --type-eyebrow-tracking: 0;
+
+  --type-lead-size: clamp(1rem, 1.5vw, 1.25rem);        /* subheadings */
+  --type-lead-weight: 300;                              /* font-light */
+  --type-lead-line: 1.6;
+
+  --type-body-size: 1rem;
+  --type-body-weight: 400;
+  --type-body-line: 1.6;
+
+  --type-small-size: 0.875rem;
+  --type-small-weight: 400;
+
+  --type-micro-size: 0.75rem;                           /* uppercase eyebrows */
+  --type-micro-tracking: 0.1em;
+
+  /* Semantic color aliases (for clarity in component code) */
+  --fg-1: var(--foreground);                            /* primary text on dark */
+  --fg-2: rgba(255,255,255,0.80);                       /* secondary text on dark */
+  --fg-3: rgba(255,255,255,0.60);                       /* tertiary / muted on dark */
+  --fg-4: rgba(255,255,255,0.40);
+
+  --on-light-1: var(--slate-900);                       /* primary text on white */
+  --on-light-2: var(--slate-600);                       /* muted text on white */
+  --on-light-3: var(--slate-500);
+
+  --surface-dark: var(--background);
+  --surface-dark-elev: var(--card);
+  --surface-light: #ffffff;
+  --surface-light-muted: var(--slate-50);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur-med: 300ms;
+  --dur-slow: 500ms;
+  --dur-xslow: 1000ms;
+}
+
+/* -------------------- Base element styles -------------------- */
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+h1 {
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-line);
+  letter-spacing: var(--type-display-tracking);
+  text-wrap: balance;
+}
+h2 {
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-line);
+  text-wrap: balance;
+}
+h3 {
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+}
+p {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+/* -------------------- Utility classes -------------------- */
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  color: var(--slate-700);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+}
+.eyebrow-pill--dark {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.10);
+  color: var(--fg-2);
+}
+.eyebrow-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: var(--type-micro-tracking);
+  font-size: var(--type-micro-size);
+  color: var(--fg-3);
+}
+.gradient-text {
+  background: linear-gradient(90deg, var(--slate-600), var(--slate-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text--on-dark {
+  background: linear-gradient(90deg, #ffffff, var(--slate-200));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}

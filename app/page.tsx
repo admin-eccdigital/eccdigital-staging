@@ -1,31 +1,33 @@
-import { GlassmorphismNav } from "@/components/glassmorphism-nav"
-import { HeroSection } from "@/components/hero-section"
-import Aurora from "@/components/Aurora"
-import { ServicesSection } from "@/components/services-section"
-import { WebEshopSection } from "@/components/web-eshop-section"
-import { WhyECCSection } from "@/components/why-ecc-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { CTASection } from "@/components/cta-section"
-import { Footer } from "@/components/footer"
+import { Nav } from "@/components/v2/Nav"
+import { Hero } from "@/components/v2/Hero"
+import { About } from "@/components/v2/About"
+import { Services } from "@/components/v2/Services"
+import { Portfolio } from "@/components/v2/Portfolio"
+import { ToolsCanvas } from "@/components/v2/ToolsCanvas"
+import { Blog } from "@/components/v2/Blog"
+import { CTA } from "@/components/v2/CTA"
+import { Footer } from "@/components/v2/Footer"
+import { LeadModal } from "@/components/v2/LeadModal"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black overflow-hidden">
-      <main className="min-h-screen relative overflow-hidden">
-        <div className="fixed inset-0 w-full h-full">
-          <Aurora colorStops={["#475569", "#64748b", "#475569"]} amplitude={1.2} blend={0.6} speed={0.8} />
-        </div>
-        <div className="relative z-10">
-          <GlassmorphismNav />
-          <HeroSection />
-          <ServicesSection />
-          <WebEshopSection />
-          <WhyECCSection />
-          <TestimonialsSection />
-          <CTASection />
-          <Footer />
-        </div>
-      </main>
-    </div>
+    <>
+      <div className="bg-aurora">
+        <div className="blob b1" />
+        <div className="blob b2" />
+        <div className="blob b3" />
+        <div className="blob b4" />
+      </div>
+      <Nav />
+      <Hero />
+      <About />
+      <Services />
+      <Portfolio />
+      <ToolsCanvas />
+      <Blog />
+      <CTA />
+      <Footer />
+      <LeadModal />
+    </>
   )
 }
