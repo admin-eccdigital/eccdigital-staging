@@ -53,7 +53,7 @@
 .tools-sec .section-head{margin-bottom:40px}
 .tools-sec .h2-light{font-size:clamp(30px,4.5vw,54px);font-weight:300;color:#fff;margin:0 0 18px;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance}
 .tools-sec .h2-light em{font-style:italic;font-weight:500;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:.12em;margin-right:-.04em}
-.tools-canvas-wrap{position:relative;width:100%;height:560px;max-width:1180px;margin:0 auto;border-radius:24px;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,255,255,.04),transparent 70%);border:1px solid rgba(255,255,255,.06);overflow:hidden}
+.tools-canvas-wrap{position:relative;width:100%;height:560px;max-width:1180px;margin:0 auto;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,255,255,.04),transparent 70%);overflow:visible}
 .tools-canvas-wrap canvas{display:block;width:100%;height:100%;touch-action:none}
 @media(max-width:680px){.tools-canvas-wrap{height:440px}}
 .tools-tooltip{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;padding:10px 18px;background:rgba(20,20,20,.85);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:9999px;color:#fff;font-size:13px;pointer-events:none;animation:tooltipIn .2s var(--ease-out)}

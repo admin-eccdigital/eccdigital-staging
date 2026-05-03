@@ -75,7 +75,7 @@ export function ToolsCanvas() {
     const SIZE_BOOST: Record<string, number> = {
       "Meta Business": 1.55,
       "Google Ads": 1.55,
-      WordPress: 1.55,
+      WordPress: 0.95,
       ChatGPT: 0.65,
       Freelo: 0.65,
       Miro: 0.65,
