@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { StructuredData } from "@/components/v2/StructuredData"
 import "./globals.css"
 import "./styles/colors_and_type.css"
 import "./styles/homepage.css"
@@ -38,6 +39,7 @@ export default function RootLayout({
     <html lang="cs" className={`dark ${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: accentRootStyle }} />
+        <StructuredData />
       </head>
       <body>{children}</body>
     </html>
