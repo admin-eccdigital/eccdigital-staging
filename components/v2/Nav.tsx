@@ -80,20 +80,32 @@ export function Nav() {
               go(i.href, i.external)
             }}
             href={i.href}
+            className={i.external ? "is-external" : ""}
           >
-            {i.name}
-            <ArrowRight size={14} />
+            <span>{i.name}</span>
+            {i.external ? (
+              // External / new page — diagonal arrow signals "leaves current page"
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-label="Otevře novou stránku"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            ) : null}
           </a>
         ))}
         <a
           href="#"
           data-lead="audit"
-          style={{
-            background: "linear-gradient(90deg,var(--accent),var(--accent-2))",
-            color: "#fff",
-            fontWeight: 600,
-            marginTop: 8,
-          }}
+          className="mobile-menu-cta"
         >
           Audit zdarma
           <ArrowRight size={14} />

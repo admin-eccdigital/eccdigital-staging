@@ -575,3 +575,16 @@
 }
 #sluzby .svc-card:hover .arrow{color:var(--accent)}
 #sluzby .svc-card:hover .arrow svg{transform:translateX(6px)}
+
+/* Mobile menu — clearer affordances per link type */
+.mobile-menu a.is-external{color:rgba(255,255,255,.85)}
+.mobile-menu a.is-external svg{color:rgba(255,255,255,.45);transition:color .2s,transform .2s}
+.mobile-menu a.is-external:hover svg{color:var(--accent);transform:translate(2px,-2px)}
+.mobile-menu a:not(.is-external):not(.mobile-menu-cta) > span{display:block;width:100%}
+/* In-page anchors no longer get a meaningless right arrow — text only */
+.mobile-menu-cta{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff !important;font-weight:600;margin-top:8px;
+  box-shadow:0 6px 18px rgba(255,138,77,.35);
+}
+.mobile-menu-cta:hover{background:linear-gradient(90deg,var(--accent),var(--accent-2)) !important}
