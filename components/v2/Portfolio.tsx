@@ -7,6 +7,8 @@ type Project = {
   desc: string
   services: string[]
   palette: [string, string]
+  image?: string
+  url?: string
 }
 
 const PROJECTS: Project[] = [
@@ -16,6 +18,8 @@ const PROJECTS: Project[] = [
     desc: "Web, výkonnostní kampaně a strategie pro instalátora tepelných čerpadel.",
     services: ["Web", "PPC", "Strategie"],
     palette: ["oklch(0.72 0.14 230)", "oklch(0.85 0.10 200)"],
+    image: "/eccdigital-staging/images/portfolio/klimahome-cz.jpg",
+    url: "https://klimahome.cz",
   },
   {
     name: "Escoflooring",
@@ -23,6 +27,8 @@ const PROJECTS: Project[] = [
     desc: "Trojjazyčný web ve spolupráci s nizozemským studiem pro mezinárodní brand.",
     services: ["Web", "3 jazyky", "Mezinárodní"],
     palette: ["oklch(0.55 0.10 60)", "oklch(0.72 0.12 50)"],
+    image: "/eccdigital-staging/images/portfolio/escoflooring-com.jpg",
+    url: "https://escoflooring.com",
   },
   {
     name: "Marcsis",
@@ -37,6 +43,8 @@ const PROJECTS: Project[] = [
     desc: "PPC kampaně a řízení online marketingu pro český e-shop.",
     services: ["PPC", "Srovnávače", "Reporting"],
     palette: ["oklch(0.70 0.16 145)", "oklch(0.82 0.12 130)"],
+    image: "/eccdigital-staging/images/portfolio/florea-cz.jpg",
+    url: "https://florea.cz",
   },
   {
     name: "Profikas.cz",
@@ -44,23 +52,36 @@ const PROJECTS: Project[] = [
     desc: "Cesta od tvorby webu k celostátním zakázkám — kompletní digitální růst.",
     services: ["Web", "Strategie", "PPC"],
     palette: ["oklch(0.60 0.15 30)", "oklch(0.75 0.13 50)"],
+    image: "/eccdigital-staging/images/portfolio/profikas-cz.jpg",
+    url: "https://profikas.cz",
   },
   {
-    name: "S.T.A.R. Digital",
+    name: "Dovolená Zadar",
     tag: "Hotelový řetězec · HR",
     desc: "Landing page pro hotelový řetězec v Chorvatsku — vícejazyčná konverze.",
     services: ["Landing page", "Mezinárodní"],
     palette: ["oklch(0.68 0.14 250)", "oklch(0.80 0.11 220)"],
+    image: "/eccdigital-staging/images/portfolio/dovolena-zadar-cz.jpg",
+    url: "https://dovolena-zadar.cz",
   },
 ]
 
 function CaseTile({ p }: { p: Project }) {
   const grad = `linear-gradient(135deg, ${p.palette[0]}, ${p.palette[1]})`
+  const thumbStyle = p.image
+    ? {
+        backgroundImage: `url(${p.image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "top center",
+      }
+    : { background: grad }
   return (
     <div className="case-card">
-      <div className="case-thumb" style={{ background: grad }}>
-        <div className="case-thumb-grid" />
-        <div className="case-thumb-mark">{p.name.split(/[ .]/)[0].slice(0, 4)}</div>
+      <div className="case-thumb" style={thumbStyle}>
+        {!p.image && <div className="case-thumb-grid" />}
+        {!p.image && (
+          <div className="case-thumb-mark">{p.name.split(/[ .]/)[0].slice(0, 4)}</div>
+        )}
       </div>
       <div className="case-body">
         <div className="case-tag">{p.tag}</div>
