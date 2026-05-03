@@ -92,7 +92,12 @@ export function LeadModal() {
       }
       setStep("sent")
     } catch (e: any) {
-      setErr("Nepodařilo se odeslat. Zkuste to znovu, nebo nám napište přímo na admin@eccdigital.cz.")
+      const msg = String(e?.message || "")
+      if (/activation/i.test(msg)) {
+        setErr("Formulář ještě není aktivován. Napište nám prosím přímo na admin@eccdigital.cz nebo zavolejte +420 724 443 968.")
+      } else {
+        setErr("Nepodařilo se odeslat. Zkuste to znovu, nebo nám napište přímo na admin@eccdigital.cz.")
+      }
     } finally {
       setBusy(false)
     }
