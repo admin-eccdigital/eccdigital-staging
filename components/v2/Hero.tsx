@@ -6,28 +6,26 @@ export function Hero() {
   const words = ["Educate", "Create", "Care"]
   const [i, setI] = useState(0)
   useEffect(() => {
-    // Calmer pace — each word lingers ~3.5s, fades softly into the next
-    const t = setInterval(() => setI((x) => (x + 1) % words.length), 3600)
+    // Slow spotlight cycle — minimal motion, accent simply moves between
+    // the three pillars roughly every 4 s
+    const t = setInterval(() => setI((x) => (x + 1) % words.length), 4000)
     return () => clearInterval(t)
   }, [])
   return (
     <section className="hero" id="top">
       <div className="hero-inner">
-        <div className="hero-chip-row">
-          <span className="hero-chip">
-            <span className="hero-chip-rotor">
-              {words.map((w, idx) => {
-                const cls =
-                  idx === i ? "is-active" : idx === (i - 1 + words.length) % words.length ? "is-prev" : ""
-                return (
-                  <span key={w} className={cls}>
-                    {w}
-                  </span>
-                )
-              })}
+        <div className="hero-pillars" aria-label="Educate · Create · Care Digital">
+          {words.map((w, idx) => (
+            <span
+              key={w}
+              className={`hp-word${idx === i ? " is-spot" : ""}`}
+              aria-current={idx === i ? "true" : undefined}
+            >
+              {w}
+              {idx < words.length - 1 && <span className="hp-sep" aria-hidden="true">·</span>}
             </span>
-          </span>
-          <span className="hero-digital">Digital</span>
+          ))}
+          <span className="hp-suffix">Digital</span>
         </div>
         <h1>
           Pomáháme firmám
