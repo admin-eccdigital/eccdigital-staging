@@ -1,0 +1,81 @@
+# Decap CMS configuration for ECC Digital blog
+# Editors hit /admin/ on the live site, log in with GitHub (OAuth), and
+# their saves commit straight to the eccdigital-content repo. The site
+# repo (this one) is never touched by editors.
+
+backend:
+  name: github
+  repo: admin-eccdigital/eccdigital-content
+  branch: main
+  # Direct save (no editorial workflow) — keeps onboarding simple. Switch to
+  # `editorial_workflow` later if you want a Draft → In Review → Ready flow.
+  base_url: https://decap-oauth.eccdigital.workers.dev # placeholder — replace with your Cloudflare Worker URL after Phase 2B
+  auth_endpoint: auth
+
+# Editor language
+locale: cs
+
+# Where uploaded images go in the content repo
+media_folder: uploads
+public_folder: /uploads
+
+# Show "View on site" link from each editor entry
+site_url: https://admin-eccdigital.github.io/eccdigital-staging
+display_url: https://admin-eccdigital.github.io/eccdigital-staging
+logo_url: https://admin-eccdigital.github.io/eccdigital-staging/images/ecc-digital-logo.png
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Článek
+    folder: blog
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}} — {{category}} ({{date | date('D. M. YYYY')}})"
+    sortable_fields: [date, title, category]
+    view_filters:
+      - label: Publikované
+        field: draft
+        pattern: false
+      - label: Rozpracované
+        field: draft
+        pattern: true
+    view_groups:
+      - label: Podle kategorie
+        field: category
+    fields:
+      - { name: title, label: Titulek, widget: string }
+      - { name: slug, label: URL slug (pouze malá písmena, pomlčky), widget: string, hint: "Použije se v URL článku — např. 'jak-pouzivame-claude'" }
+      - { name: date, label: Datum publikace, widget: datetime, format: "YYYY-MM-DD", picker_utc: false, time_format: false }
+      - name: category
+        label: Kategorie
+        widget: select
+        options:
+          - { label: AI, value: AI }
+          - { label: Strategie, value: Strategie }
+          - { label: Případovka, value: Případovka }
+          - { label: Výkonnostní marketing, value: "Výkonnostní marketing" }
+          - { label: Web a UX, value: "Web a UX" }
+          - { label: Analytika, value: Analytika }
+          - { label: SEO, value: SEO }
+      - { name: image, label: Hlavní obrázek (16:9, doporučeno 1200×675), widget: image, choose_url: false, media_library: { config: { multiple: false } } }
+      - { name: excerpt, label: Krátký popis (1–2 věty, zobrazí se v náhledu), widget: text }
+      - { name: readingMinutes, label: Doba čtení (minuty), widget: number, default: 5, min: 1, max: 60, value_type: int }
+      - { name: draft, label: Rozpracovaný (zatím nepublikovat), widget: boolean, default: false }
+      - name: author
+        label: Autor
+        widget: object
+        collapsed: true
+        fields:
+          - { name: name, label: Jméno, widget: string, default: "Petr Štěpán" }
+          - { name: title, label: Pozice, widget: string, default: "Vedoucí výkonnostních kampaní a analytiky", required: false }
+      - name: body
+        label: Obsah článku
+        widget: markdown
+        hint: "Použijte záhlaví ##, ###, odrážky, citace (>), tučné **text**, italiku *text*. Obrázky můžete přetáhnout přímo do editoru."
+        editor_components:
+          - image
+          - code-block
