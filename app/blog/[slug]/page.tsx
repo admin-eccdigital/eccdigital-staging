@@ -81,15 +81,9 @@ export default async function BlogArticlePage({
 
   return (
     <>
-      <div className="bg-aurora">
-        <div className="blob b1" />
-        <div className="blob b2" />
-        <div className="blob b3" />
-        <div className="blob b4" />
-      </div>
       <Nav />
       <main className="blog-article-page">
-        <article>
+        <article className="light light--first">
           <header className="article-hero">
             <div className="container article-hero-inner">
               <a className="article-back" href={`${BASE_PATH}/blog/`}>
@@ -150,7 +144,7 @@ export default async function BlogArticlePage({
         </article>
 
         {related.length > 0 ? (
-          <section className="light light--tight blog-related">
+          <section className="light blog-related">
             <div className="container">
               <h2 className="h2">
                 Související <span className="accent">články</span>

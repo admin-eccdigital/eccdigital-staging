@@ -763,8 +763,12 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 .blog-empty{max-width:540px;margin:60px auto;padding:36px;text-align:center;background:#fff;border:1px dashed #cbd5e1;border-radius:18px;color:#64748b;font-size:15px}
 
 /* Article detail */
-.blog-article-page{padding-bottom:80px}
-.article-hero{padding:54px 0 26px}
+.blog-article-page{padding-bottom:0}
+/* Article page wraps content in .light light--first which already provides
+   96px of top padding — keep article-hero internal spacing minimal so the
+   nav-clearance feels right */
+.article-hero{padding:0 0 26px}
+.blog-related{padding-top:64px;border-top:1px solid #e2e8f0;background:linear-gradient(180deg,#fafbfd 0%,#f4f6fa 100%)}
 .article-hero-inner{max-width:820px;margin:0 auto;text-align:center}
 .article-back{display:inline-flex;align-items:center;color:#64748b;font-size:13px;font-weight:500;text-decoration:none;margin-bottom:20px;transition:color .2s}
 .article-back:hover{color:var(--accent-text)}
@@ -810,7 +814,7 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 .blog-related{margin-top:60px;padding-top:60px;border-top:1px solid #e2e8f0}
 
 @media(max-width:680px){
-  .article-hero{padding:32px 0 18px}
+  .article-hero{padding:0 0 18px}
   .article-image-wrap{margin:8px 0 28px}
   .article-image{border-radius:14px}
   .blog-prose{font-size:16px}

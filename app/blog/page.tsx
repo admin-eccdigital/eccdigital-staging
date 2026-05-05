@@ -18,15 +18,9 @@ export default async function BlogIndexPage() {
   const categories = await getCategories()
   return (
     <>
-      <div className="bg-aurora">
-        <div className="blob b1" />
-        <div className="blob b2" />
-        <div className="blob b3" />
-        <div className="blob b4" />
-      </div>
       <Nav />
       <main className="blog-listing-page">
-        <section className="light light--tight">
+        <section className="light light--first">
           <div className="container">
             <header className="blog-listing-head">
               <div className="eyebrow">
