@@ -6,7 +6,8 @@ export function Hero() {
   const words = ["Educate", "Create", "Care"]
   const [i, setI] = useState(0)
   useEffect(() => {
-    const t = setInterval(() => setI((x) => (x + 1) % words.length), 2200)
+    // Calmer pace — each word lingers ~3.5s, fades softly into the next
+    const t = setInterval(() => setI((x) => (x + 1) % words.length), 3600)
     return () => clearInterval(t)
   }, [])
   return (

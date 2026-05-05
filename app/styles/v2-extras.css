@@ -629,3 +629,27 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
   margin-top:1px;
 }
 .lf-vb-ico svg{width:11px;height:11px}
+
+/* ============ Larger logo + nav typography ============ */
+.nav-logo img{height:32px !important}
+.nav-wrap[data-shrink="1"] .nav-logo img{height:26px !important}
+.nav-link{font-size:15px !important;font-weight:500 !important}
+.nav-link::after{height:2px;border-radius:2px}
+.nav-cta{font-size:14px}
+.mobile-menu a{font-size:16px;padding:14px 16px}
+
+/* On mobile keep logo readable but a touch smaller than desktop */
+@media(max-width:680px){
+  .nav-logo img{height:30px !important}
+  .nav-wrap[data-shrink="1"] .nav-logo img{height:24px !important}
+}
+
+/* ============ Hero rotor — fade only, slower, calmer ============ */
+.hero-chip-rotor span{
+  position:absolute;left:0;right:0;
+  transform:none !important;
+  opacity:0;
+  transition:opacity .8s var(--ease-out);
+}
+.hero-chip-rotor span.is-active{position:relative;opacity:1}
+.hero-chip-rotor span.is-prev{opacity:0}
