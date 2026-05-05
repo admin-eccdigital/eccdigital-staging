@@ -1,28 +1,18 @@
 "use client"
-import { useEffect, useState } from "react"
 import { ArrowRight } from "./shared"
 
+const PILLARS = ["Educate", "Create", "Care"]
+
 export function Hero() {
-  const words = ["Educate", "Create", "Care"]
-  const [i, setI] = useState(0)
-  useEffect(() => {
-    // Slow spotlight cycle — minimal motion, accent simply moves between
-    // the three pillars roughly every 4 s
-    const t = setInterval(() => setI((x) => (x + 1) % words.length), 4000)
-    return () => clearInterval(t)
-  }, [])
   return (
     <section className="hero" id="top">
       <div className="hero-inner">
         <div className="hero-pillars" aria-label="Educate · Create · Care Digital">
-          {words.map((w, idx) => (
-            <span
-              key={w}
-              className={`hp-word${idx === i ? " is-spot" : ""}`}
-              aria-current={idx === i ? "true" : undefined}
-            >
-              {w}
-              {idx < words.length - 1 && <span className="hp-sep" aria-hidden="true">·</span>}
+          {PILLARS.map((w, idx) => (
+            <span key={w} className="hp-word">
+              <span className="hp-init">{w[0]}</span>
+              <span className="hp-rest">{w.slice(1)}</span>
+              {idx < PILLARS.length - 1 && <span className="hp-sep" aria-hidden="true">·</span>}
             </span>
           ))}
           <span className="hp-suffix">Digital</span>

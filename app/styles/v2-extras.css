@@ -654,10 +654,11 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 .hero-chip-rotor span.is-active{position:relative;opacity:1}
 .hero-chip-rotor span.is-prev{opacity:0}
 
-/* ============ Hero pillars — static row with travelling accent ============
-   Replaces the rotating single-word chip. All three pillars are visible at
-   once (Educate · Create · Care Digital); a soft orange spotlight cycles
-   between them every ~4 s for a subtle dynamic without constant motion. */
+/* ============ Hero pillars — fully static "Educate · Create · Care Digital" ============
+   No animation. Initials E · C · C share the same bold white styling as the
+   "Digital" suffix so the wordmark visually contains "ECC Digital"; the
+   remainder of each pillar word sits in a subdued tone, like a typographic
+   key reveal. */
 .hero-pillars{
   display:inline-flex;
   align-items:center;
@@ -669,53 +670,31 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
   font-weight:700;
   letter-spacing:-0.005em;
   line-height:1.15;
-  color:rgba(255,255,255,.78);
   opacity:0;transform:translateY(12px);
   animation:fadeUp .8s .35s var(--ease-out) forwards;
 }
 .hero-pillars .hp-word{
   position:relative;
-  display:inline-flex;align-items:center;gap:14px;
-  color:rgba(255,255,255,.78);
-  transition:color .9s var(--ease-out),text-shadow .9s var(--ease-out),transform .9s var(--ease-out);
+  display:inline-flex;align-items:baseline;gap:14px;
   white-space:nowrap;
 }
-.hero-pillars .hp-word.is-spot{
-  color:transparent;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  -webkit-background-clip:text;background-clip:text;
-  text-shadow:0 0 30px rgba(255,138,77,.45);
+.hero-pillars .hp-init{
+  color:#fff;
+  font-weight:700;
 }
-.hero-pillars .hp-word.is-spot::after{
-  /* soft warm halo behind the active pillar */
-  content:"";
-  position:absolute;left:50%;top:50%;
-  width:140%;height:200%;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(closest-side,rgba(255,138,77,.25),transparent 70%);
-  pointer-events:none;z-index:-1;
-  animation:hpHaloIn .9s var(--ease-out) forwards;
+.hero-pillars .hp-rest{
+  color:rgba(255,255,255,.62);
+  font-weight:500;
 }
-@keyframes hpHaloIn{from{opacity:0}to{opacity:1}}
 .hero-pillars .hp-sep{
-  color:rgba(255,255,255,.32);
+  color:rgba(255,255,255,.30);
   font-weight:400;
   font-size:.8em;
-  background:none !important;
-  -webkit-text-fill-color:rgba(255,255,255,.32) !important;
-  text-shadow:none !important;
 }
 .hero-pillars .hp-suffix{
   color:#fff;
   font-weight:700;
   margin-left:6px;
-}
-
-/* Reduced motion: kill the cycling — pillars stay static, accent permanently
-   on the first one (or none). Halo skipped. */
-@media(prefers-reduced-motion:reduce){
-  .hero-pillars .hp-word{transition:none}
-  .hero-pillars .hp-word.is-spot::after{display:none}
 }
 
 /* Hide the legacy chip styles in case they ever reappear */
