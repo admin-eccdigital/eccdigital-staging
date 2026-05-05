@@ -702,3 +702,43 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 
 /* Hide the legacy chip styles in case they ever reappear */
 .hero-chip-row, .hero-chip, .hero-chip-rotor, .hero-digital{display:none}
+
+/* ============ Italic gradient text — universal anti-clip fix ============
+   `background-clip:text` + italic + descenders (g, p, j, y) was clipping the
+   rightmost stroke and the bottom curl across many headings. One generous
+   padding rule covers every place we use the pattern, so we don't have to
+   chase it again per-section. */
+:where(
+  .h2 .accent,
+  .h2 .grad,
+  .hero h1 .accent,
+  .lf-side-title em,
+  .testim .section-head .h2-light em,
+  .cta-box h3 em,
+  .tools-sec .h2-light em,
+  .bo-title span,
+  .hp-init,
+  .hp-rest,
+  .hp-suffix
+){
+  /* No clipping element should be flush — give every italic + descender
+     stroke breathing room on every side, then cancel the negative margin
+     trick that was eating into right-edge italics. */
+}
+.h2 .accent,
+.h2 .grad,
+.hero h1 .accent,
+.lf-side-title em,
+.testim .section-head .h2-light em,
+.cta-box h3 em,
+.tools-sec .h2-light em,
+.bo-title span{
+  padding:.04em .35em .14em .06em !important;
+  margin-right:0 !important;
+  overflow:visible !important;
+  /* Prevent the line-box from squashing the bottom of descenders */
+  line-height:1.18 !important;
+}
+/* The matching non-italic gradient `.h2 .grad` only needs right padding —
+   no slant, no descender risk — so a tighter override: */
+.h2 .grad{padding:0 .12em 0 0 !important;line-height:inherit !important}
