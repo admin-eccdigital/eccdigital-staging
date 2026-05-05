@@ -769,8 +769,17 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
    nav-clearance feels right */
 .article-hero{padding:0 0 26px}
 .blog-related{padding-top:64px;border-top:1px solid #e2e8f0;background:linear-gradient(180deg,#fafbfd 0%,#f4f6fa 100%)}
-.article-hero-inner{max-width:820px;margin:0 auto;text-align:center}
-.article-back{display:inline-flex;align-items:center;color:#64748b;font-size:13px;font-weight:500;text-decoration:none;margin-bottom:20px;transition:color .2s}
+.article-hero-inner{
+  max-width:820px;margin:0 auto;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+}
+.article-back{
+  display:inline-flex;align-self:flex-start;align-items:center;gap:6px;
+  color:#64748b;font-size:13px;font-weight:500;text-decoration:none;
+  margin:0 0 28px 0;
+  width:fit-content;
+  transition:color .2s;
+}
 .article-back:hover{color:var(--accent-text)}
 .article-cat{display:inline-flex;padding:6px 14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-radius:9999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
 .article-title{font-size:clamp(28px,4.4vw,46px);font-weight:700;line-height:1.15;color:#0f172a;margin:0 0 22px;text-wrap:balance}
