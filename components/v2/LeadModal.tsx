@@ -51,10 +51,13 @@ export function LeadModal() {
 
   const isAudit = variant === "audit"
   const title = isAudit ? "Audit zdarma" : "Nezávazná konzultace"
-  const eyebrow = isAudit ? "Bezplatný audit" : "30minutový hovor"
+  const eyebrow = isAudit ? "Bezplatný audit · výstup do 10 dní" : "30minutový hovor · do 3 dní"
   const blurb = isAudit
-    ? "Podíváme se na váš web, kampaně a měření. Výstup do 10 dní, bez závazku."
-    : "Probereme vaši situaci a navrhneme další kroky. Bez prezentací, bez závazku."
+    ? "Rychlý odborný pohled na stav digitálního obrazu vaší firmy nebo značky — web, kampaně, měření a viditelnost ve vyhledávání. Pošleme vám souhrn nálezů a doporučení do 10 dní, bez závazku."
+    : "Konkrétní situace, otázka nebo rozhodnutí, ke kterému potřebujete druhý názor — od strategie a výběru platforem přes obsah a SEO až po expanzi. Probereme to společně po telefonu nebo videu."
+  const bullets = isAudit
+    ? ["Rychlý snímek stavu, ne dlouhá zakázka", "Pokrýváme web, PPC, analytiku i SEO", "Hodí se pokud zatím netušíte, kde stojíte"]
+    : ["Probíráme vaši konkrétní situaci", "Druhý názor na strategii nebo plán", "Hodí se když víte, co chcete řešit"]
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -136,6 +139,16 @@ export function LeadModal() {
               </div>
               <h3 id="lf-title" className="lf-title">{title}</h3>
               <p className="lf-blurb">{blurb}</p>
+              <ul className="lf-variant-bullets" aria-label={`Co znamená ${isAudit ? "audit" : "konzultace"}`}>
+                {bullets.map((b) => (
+                  <li key={b}>
+                    <span className="lf-vb-ico" aria-hidden="true">
+                      <CheckIcon />
+                    </span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
               <form className="lf-form" onSubmit={submit} noValidate>
                 <label className="lf-field">
                   <span>Jméno a příjmení <em>*</em></span>

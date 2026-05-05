@@ -510,9 +510,9 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 /* Hide on very small heights (e.g. landscape phones) so it doesn't cover content */
 @media(max-height:520px){.fab-cta{display:none}}
 
-/* Scroll-to-top — sits *above* the inquiry FAB so they stack visibly without overlap */
+/* Scroll-to-top — bottom-right corner */
 .fab-top{
-  position:fixed;right:18px;bottom:78px;z-index:90;
+  position:fixed;right:18px;bottom:18px;z-index:90;
   width:42px;height:42px;
   display:inline-flex;align-items:center;justify-content:center;
   background:rgba(15,18,24,.85);
@@ -530,7 +530,7 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
 .fab-top:focus-visible{outline:3px solid rgba(255,138,77,.6);outline-offset:2px}
 
 @media(max-width:680px){
-  .fab-top{bottom:74px;right:14px;width:40px;height:40px}
+  .fab-top{bottom:16px;right:14px;width:40px;height:40px}
 }
 
 /* ============ Services (02) cards — punchier default + new hover ============
@@ -608,3 +608,24 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
   .nav{gap:12px;padding:8px 6px 8px 16px}
   .nav-wrap[data-shrink="1"] .nav{padding:6px 6px 6px 14px}
 }
+
+/* LeadModal — variant bullets that explain what Audit vs Konzultace means */
+.lf-variant-bullets{
+  list-style:none;padding:0;margin:14px 0 22px;
+  display:flex;flex-direction:column;gap:10px;
+  border-top:1px solid rgba(15,23,42,.08);
+  border-bottom:1px solid rgba(15,23,42,.08);
+  padding:16px 0;
+}
+.lf-variant-bullets li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:#475569;line-height:1.5;
+}
+.lf-vb-ico{
+  flex-shrink:0;width:20px;height:20px;border-radius:9999px;
+  background:var(--accent-soft);color:var(--accent-text);
+  border:1px solid var(--accent-soft-bd);
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:1px;
+}
+.lf-vb-ico svg{width:11px;height:11px}
