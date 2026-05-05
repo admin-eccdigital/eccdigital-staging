@@ -22,7 +22,7 @@ export function Hero() {
           <br />v <span className="accent">digitálním růstu</span>
         </h1>
         <p className="hero-lead">
-          Jsme strategický partner českých B2B firem. Spojujeme výkonnostní kampaně, weby, analytiku a školení do jedné
+          Jsme strategický partner českých B2B i B2C firem. Spojujeme výkonnostní kampaně, weby, analytiku a školení do jedné
           funkční strategie — nikoliv izolovaných služeb.
         </p>
         <div className="hero-ctarow">
