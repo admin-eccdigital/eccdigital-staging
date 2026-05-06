@@ -22,7 +22,7 @@ public_folder: /uploads
 # Show "View on site" link from each editor entry
 site_url: https://admin-eccdigital.github.io/eccdigital-staging
 display_url: https://admin-eccdigital.github.io/eccdigital-staging
-logo_url: https://admin-eccdigital.github.io/eccdigital-staging/images/ecc-digital-logo.png
+logo_url: https://admin-eccdigital.github.io/eccdigital-staging/images/logo-ecc-black.png
 
 collections:
   - name: blog
