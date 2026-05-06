@@ -95,27 +95,58 @@ export default {
 
       const html = `<!doctype html>
 <html><head><meta charset="utf-8"><title>Přihlášení dokončeno</title>
-<style>body{font-family:system-ui;background:#0a0a0a;color:#e6edf3;text-align:center;padding:60px 24px}</style>
+<style>body{font-family:system-ui;background:#0a0a0a;color:#e6edf3;text-align:center;padding:60px 24px}
+a{color:#ff8a4d}</style>
 </head><body>
-<p>Přihlášení dokončeno. Tato karta se za chvíli zavře…</p>
+<p>Přihlášení dokončeno. Pokud se tato karta sama nezavře, klikněte
+   <a href="https://admin-eccdigital.github.io/eccdigital-staging/admin/">zde</a>.</p>
 <script>
 (function(){
   var ALLOWED = ${allowedOriginsJson};
   var data = ${JSON.stringify(payload)};
-  function send(state, payload){
+  function send(state, payload, origin){
     if (!window.opener) return;
     var msg = "authorization:github:" + state + ":" + JSON.stringify(payload);
-    ALLOWED.forEach(function(origin){ try { window.opener.postMessage(msg, origin); } catch(e){} });
+    if (origin) {
+      try { window.opener.postMessage(msg, origin); } catch(e){}
+    } else {
+      ALLOWED.forEach(function(o){ try { window.opener.postMessage(msg, o); } catch(e){} });
+    }
   }
-  // Decap first sends "authorizing:github" once it opens this popup; we
-  // reply with the success payload as soon as we hear it.
+
+  // Decap protocol — popup-side:
+  // 1) Tell opener "I'm here, ready to authorize" (first move).
+  // 2) Opener replies "authorizing:github" with its origin (e.handshake).
+  // 3) Reply with the actual token success payload to that origin.
+  // We also fall back to broadcasting in case Decap version differs.
+  function announce(){
+    if (!window.opener) return false;
+    ALLOWED.forEach(function(o){
+      try { window.opener.postMessage("authorizing:github", o); } catch(e){}
+    });
+    return true;
+  }
+
   window.addEventListener("message", function(e){
-    if (e.data === "authorizing:github") { send("success", data); }
+    if (e.data === "authorizing:github" && ALLOWED.indexOf(e.origin) > -1) {
+      send("success", data, e.origin);
+    }
   }, false);
-  // Some Decap versions skip that handshake and just expect the popup to
-  // proactively post — do both, the listener above is idempotent on the
-  // Decap side (it just picks up whichever comes first).
-  send("success", data);
+
+  if (announce()) {
+    // Belt-and-braces: blast the success payload on a short delay too —
+    // some Decap versions don't bother sending the handshake reply.
+    setTimeout(function(){ send("success", data); }, 500);
+  } else {
+    // No opener (popup blocker / direct navigation) — store token locally
+    // so the editor can pick it up on return, then redirect back.
+    try {
+      window.localStorage.setItem("decap-cms-user",
+        JSON.stringify({ token: data.token, backendName: "github" }));
+    } catch(e){}
+    window.location.replace(
+      "https://admin-eccdigital.github.io/eccdigital-staging/admin/#token=" + data.token);
+  }
 }());
 </script>
 </body></html>`
