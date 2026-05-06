@@ -43,7 +43,9 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
 
-      - run: npx next build
+      # Use npm run build (not `npx next build`) so the `prebuild` hook
+      # fires and scripts/sync-content.mjs copies content/uploads/ → public/uploads/
+      - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
