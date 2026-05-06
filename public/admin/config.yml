@@ -9,7 +9,7 @@ backend:
   branch: main
   # Direct save (no editorial workflow) — keeps onboarding simple. Switch to
   # `editorial_workflow` later if you want a Draft → In Review → Ready flow.
-  base_url: https://decap-oauth.eccdigital.workers.dev # placeholder — replace with your Cloudflare Worker URL after Phase 2B
+  base_url: https://decap-oauth.royal-silence-27df.workers.dev
   auth_endpoint: auth
 
 # Editor language
