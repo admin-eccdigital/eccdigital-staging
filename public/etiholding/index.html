@@ -571,23 +571,25 @@
       display:flex; flex-direction: column; gap: 5px;
       width: 32px; height: 32px;
       align-items: flex-end; justify-content: center;
+      position: relative; z-index: 210;
     }
-    .menu-toggle span{ display:block; width: 24px; height: 1.5px; background: var(--ink); }
+    .menu-toggle span{ display:block; width: 24px; height: 1.5px; background: var(--ink); transition: transform .3s ease, opacity .3s ease; }
     .menu-toggle span:nth-child(2){ width: 16px; }
-    .nav-links{
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(251,250,247,.97);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    .menu-toggle.active span:first-child{ transform: rotate(45deg) translate(4px, 4px); }
+    .menu-toggle.active span:nth-child(2){ opacity: 0; }
+    .nav-links.open{
+      display: flex;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: var(--bg);
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 32px;
-      z-index: 100;
+      gap: 36px;
+      z-index: 200;
     }
-    .nav-links.open{ display: flex; }
-    .nav-links a{ font-size: 20px; letter-spacing: .08em; }
+    .nav-links.open a{ font-size: 24px; letter-spacing: .08em; color: var(--ink); }
     .nav-cta{ display: none; }
     .brand-medallion{ width: 96px; height: 96px; margin-bottom: -22px; }
     .brand-grid{ grid-template-columns: 1fr; }
@@ -1007,9 +1009,13 @@
   const navLinks = document.querySelector('.nav-links');
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('open');
+    menuToggle.classList.toggle('active');
   });
   navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
   });
 
   // Parallax na watermark v hero sekci
