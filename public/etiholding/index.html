@@ -134,6 +134,7 @@
   .nav-cta:hover{ background: var(--ink); color: var(--bg); }
 
   .menu-toggle{ display:none; margin-left: auto; }
+  .mobile-contact{ display:none; }
 
   /* ============ HERO ============ */
   .hero{
@@ -590,6 +591,20 @@
       z-index: 200;
     }
     .nav-links.open a{ font-size: 24px; letter-spacing: .08em; color: var(--ink); }
+    .nav-links.open .mobile-contact{
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      position: absolute; bottom: 48px; left: 0; right: 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      margin: 0 var(--pad);
+    }
+    .nav-links.open .mobile-contact a{
+      font-size: 15px; letter-spacing: .04em;
+      color: var(--ink); border-bottom: 1px solid var(--bronze); padding-bottom: 2px;
+    }
+    .nav-links.open .mobile-contact span{
+      font-size: 13px; color: var(--muted); letter-spacing: .04em;
+    }
     .nav-cta{ display: none; }
     .brand-medallion{ width: 96px; height: 96px; margin-bottom: -22px; }
     .brand-grid{ grid-template-columns: 1fr; }
@@ -635,6 +650,10 @@
       <a href="#brands">Naše značky</a>
       <a href="#values">Hodnoty</a>
       <a href="#contact">Kontakt</a>
+      <div class="mobile-contact">
+        <a href="mailto:info@etigroup.cz">info@etigroup.cz</a>
+        <span>Dlouhá 715/38, Praha</span>
+      </div>
     </nav>
     <a href="#contact" class="nav-cta">Spojte se s námi</a>
     <button class="menu-toggle" aria-label="Otevřít menu">
