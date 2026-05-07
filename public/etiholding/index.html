@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ETI Holding — Skupina značek, které spojuje kvalita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ TOKENS ============ */
+  :root{
+    --bg: #f8f7f3;          /* teplá krová bílá */
+    --bg-2: #efede7;        /* mírně tmavší panel */
+    --ink: #0a1947;         /* firemní navy z loga — primární text */
+    --ink-2: #2e3a66;       /* sekundární navy text */
+    --muted: #8a8fa3;       /* metadata */
+    --line: #ddd9cf;        /* hairlines */
+    --accent: #0a1947;      /* navy — primární identita */
+    --accent-deep: #060f33; /* ještě hlubší navy pro plochy */
+    --bronze: #b08856;      /* jemný akcent — linka, detail */
+    --paper: #ffffff;
+    --shadow: 0 1px 2px rgba(31,34,31,.04), 0 24px 60px -30px rgba(31,34,31,.18);
+
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --maxw: 1320px;
+    --pad: clamp(20px, 4vw, 64px);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img{ display:block; max-width:100%; }
+  a{ color: inherit; text-decoration: none; }
+  button{ font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+  .eyebrow{
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .eyebrow .dot{
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--bronze);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+  }
+
+  h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; margin: 0; color: var(--ink); }
+  h1{ font-size: clamp(40px, 6.4vw, 96px); line-height: 1.02; letter-spacing: -.02em; }
+  h2{ font-size: clamp(32px, 4.4vw, 60px); line-height: 1.06; }
+  h3{ font-size: clamp(22px, 2vw, 28px); line-height: 1.2; }
+  p{ margin: 0; color: var(--ink-2); text-wrap: pretty; }
+
+  /* ============ HEADER ============ */
+  .header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,250,247,.78);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .header.scrolled{ border-bottom-color: var(--line); }
+  .nav{
+    display:flex;
+    align-items:center;
+    height: 92px;
+    gap: 32px;
+    position: relative;
+  }
+  .brand-medallion{
+    width: 144px; height: 144px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    box-shadow: 0 14px 40px -18px rgba(10,25,71,.25);
+    flex-shrink: 0;
+    transition: transform .35s ease, box-shadow .35s ease;
+    margin-bottom: -52px;
+    z-index: 5;
+  }
+  .brand-medallion:hover{
+    transform: scale(1.04);
+    box-shadow: 0 18px 48px -16px rgba(10,25,71,.32);
+  }
+  .brand-medallion img{
+    width: 78%; height: auto; display: block;
+  }
+
+  .nav-links{
+    display:flex; gap: 36px; align-items:center; flex: 1; justify-content: center;
+  }
+  .nav-links a{
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink-2); font-weight: 500;
+    position: relative; padding: 6px 0;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:0; height:1px;
+    background: var(--accent); transition: right .35s ease;
+  }
+  .nav-links a:hover{ color: var(--ink); }
+  .nav-links a:hover::after{ right:0; }
+
+  .nav-cta{
+    border: 1px solid var(--ink);
+    padding: 11px 20px;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    transition: background .25s ease, color .25s ease;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover{ background: var(--ink); color: var(--bg); }
+
+  .menu-toggle{ display:none; }
+
+  /* ============ HERO ============ */
+  .hero{
+    position: relative;
+    padding: clamp(60px, 9vw, 140px) 0 clamp(60px, 9vw, 120px);
+    overflow: hidden;
+  }
+  .hero-watermark{
+    position: absolute;
+    top: 50%; left: -8%;
+    width: 60vw; max-width: 720px;
+    aspect-ratio: 1/1;
+    transform: translateY(-50%) rotate(-8deg);
+    background: url('assets/logo_symbol.png') center/contain no-repeat;
+    opacity: .04;
+    pointer-events: none;
+    will-change: transform;
+    z-index: 0;
+  }
+  .hero .wrap{ position: relative; z-index: 1; }
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: end;
+  }
+  .hero-copy .eyebrow{ margin-bottom: 28px; display:block; }
+  .hero-copy h1 em{
+    font-style: italic;
+    color: var(--accent-deep);
+    font-weight: 300;
+  }
+  .hero-lede{
+    margin-top: 32px;
+    max-width: 460px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .hero-actions{
+    display:flex; gap: 16px; margin-top: 40px; flex-wrap: wrap;
+  }
+  .btn{
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 26px;
+    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid var(--ink);
+    background: var(--ink); color: var(--bg);
+    transition: background .25s ease, color .25s ease, transform .25s ease;
+  }
+  .btn:hover{ background: transparent; color: var(--ink); }
+  .btn.ghost{ background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn.ghost:hover{ background: var(--ink); color: var(--bg); }
+  .btn .arrow{ transition: transform .3s ease; }
+  .btn:hover .arrow{ transform: translateX(4px); }
+
+  .hero-visual{
+    position: relative;
+  }
+  .hero-photo{
+    aspect-ratio: 4/5;
+    background: var(--bg-2);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-photo img{
+    width:100%; height:100%; object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 8s ease;
+  }
+  .hero-photo:hover img{ transform: scale(1.08); }
+  .hero-tag{
+    position: absolute; left: 0; bottom: -22px;
+    background: var(--bg);
+    padding: 14px 22px 14px 0;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-stats{
+    display:grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: clamp(60px, 8vw, 100px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat{
+    padding: 32px 24px 32px 32px;
+    border-right: 1px solid var(--line);
+    text-align: left;
+  }
+  .stat:first-child{ padding-left: 0; }
+  .stat:last-child{ border-right: 0; }
+  .stat .num{
+    font-family: var(--serif);
+    font-size: clamp(40px, 4.5vw, 60px);
+    line-height: 1;
+    font-weight: 400;
+    color: var(--ink);
+    display:flex; align-items: baseline; gap: 4px;
+    justify-content: flex-start;
+  }
+  .stat .num sup{
+    font-size: .35em; color: var(--bronze);
+    font-family: var(--sans); font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+  .stat .lbl{
+    margin-top: 12px;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ============ SECTION GENERICS ============ */
+  section{ padding: clamp(80px, 10vw, 140px) 0; }
+  .sec-head{
+    display:grid; grid-template-columns: 1fr 1.4fr;
+    gap: clamp(32px, 5vw, 80px);
+    margin-bottom: clamp(48px, 6vw, 80px);
+    align-items: end;
+  }
+  .sec-head h2 em{ font-style: italic; color: var(--accent-deep); font-weight: 300; }
+  .sec-head .lede{
+    max-width: 540px;
+    font-size: 17px; line-height: 1.7;
+  }
+
+  /* ============ ABOUT ============ */
+  .about{ background: var(--paper); position: relative; overflow: hidden; }
+  .about::before{
+    content: "";
+    position: absolute;
+    bottom: -20%; left: -10%;
+    width: 50vw; max-width: 600px;
+    aspect-ratio: 1/1;
+    background: url('assets/logo_symbol.png') center/contain no-repeat;
+    opacity: .035;
+    transform: rotate(-12deg);
+    pointer-events: none;
+  }
+  .about .wrap{ position: relative; z-index: 1; }
+  .about-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: start;
+  }
+  .about-photo{
+    aspect-ratio: 5/6;
+    overflow: hidden; background: var(--bg-2);
+    position: sticky; top: 100px;
+  }
+  .about-photo img{ width:100%; height:100%; object-fit:cover; }
+  .about-content p{ font-size: 17px; line-height: 1.75; margin-bottom: 24px; }
+  .about-content p:first-of-type{
+    font-family: var(--serif); font-size: 24px; line-height: 1.45;
+    color: var(--ink); font-weight: 400;
+    margin-bottom: 32px;
+  }
+  .about-meta{
+    display:grid; grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .about-meta .row .k{
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  .about-meta .row .v{
+    font-family: var(--serif); font-size: 22px; color: var(--ink);
+  }
+
+  /* ============ BRANDS ============ */
+  .brands{ background: var(--bg); }
+  .brand-grid{
+    display:grid; grid-template-columns: repeat(6, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  .brand-card{
+    grid-column: span 2;
+    position: relative;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .3s ease, transform .35s ease;
+  }
+  .brand-card:nth-child(1),
+  .brand-card:nth-child(2),
+  .brand-card:nth-child(3){ grid-column: span 2; }
+  .brand-card:nth-child(4){ grid-column: 2 / span 2; }
+  .brand-card:nth-child(5){ grid-column: 4 / span 2; }
+  .brand-card:hover{ border-color: var(--ink); }
+  .brand-card .photo{
+    aspect-ratio: 4/3;
+    overflow: hidden; background: var(--bg-2);
+  }
+  .brand-card .photo img{
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 1s ease;
+  }
+  .brand-card:hover .photo img{ transform: scale(1.06); }
+  .brand-card .body{
+    padding: 32px 32px 36px;
+    position: relative;
+  }
+  .brand-card .brand-logo-mark{
+    position: absolute;
+    top: -36px; left: 32px;
+    width: 72px; height: 72px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid; place-items: center;
+    box-shadow: 0 8px 24px -12px rgba(10,25,71,.25);
+  }
+  .brand-card .brand-logo-mark img{
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .brand-card .body.has-logo{ padding-top: 56px; }
+  .brand-card .cat{
+    display: inline-block;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--bronze); margin-bottom: 16px;
+  }
+  .brand-card h3{ font-size: clamp(24px, 2.2vw, 32px); margin-bottom: 14px; }
+  .brand-card .tagline{
+    font-style: italic; font-family: var(--serif); font-size: 18px;
+    color: var(--accent-deep); margin-bottom: 14px;
+  }
+  .brand-card p{ font-size: 15px; line-height: 1.7; }
+  .brand-card .more{
+    margin-top: 28px;
+    display:inline-flex; align-items:center; gap: 10px;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--ink); padding-bottom: 4px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .brand-card .more svg{ transition: transform .3s ease; }
+  .brand-card:hover .more svg{ transform: translateX(4px); }
+
+  /* "Coming soon" karta */
+  .brand-card.soon{
+    background: linear-gradient(180deg, var(--bg-2), var(--paper));
+    border-style: dashed;
+  }
+  .brand-card.soon .photo{
+    background: var(--bg-2);
+    position: relative;
+  }
+  .brand-card.soon .photo::after{
+    content:""; position:absolute; inset:0;
+    background: repeating-linear-gradient(135deg, transparent 0 14px, rgba(31,34,31,.03) 14px 15px);
+  }
+  .brand-card.soon .photo .placeholder-text{
+    position: absolute; inset:0;
+    display:grid; place-items:center;
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(28px, 3vw, 42px);
+    color: var(--accent-deep);
+    text-align:center; padding: 24px;
+  }
+  .brand-card.soon .badge{
+    display:inline-block;
+    background: var(--accent-deep); color: var(--bg);
+    padding: 6px 12px;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ============ VALUES ============ */
+  .values{
+    background: var(--accent-deep);
+    color: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .values::before{
+    content: "";
+    position: absolute;
+    top: -10%; right: -12%;
+    width: 70vw; max-width: 900px;
+    aspect-ratio: 1/1;
+    background: url('assets/logo_symbol.png') center/contain no-repeat;
+    opacity: .06;
+    filter: brightness(0) invert(1);
+    transform: rotate(12deg);
+    pointer-events: none;
+    will-change: transform;
+  }
+  .values .wrap{ position: relative; z-index: 1; }
+  .values .eyebrow{ color: rgba(251,250,247,.6); }
+  .values h2{ color: var(--bg); }
+  .values h2 em{ color: #d4b88a; font-style: italic; font-weight: 300; }
+  .values .lede{ color: rgba(251,250,247,.75); }
+
+  .values-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: clamp(48px, 6vw, 80px);
+    border-top: 1px solid rgba(251,250,247,.15);
+  }
+  .value{
+    padding: 48px 28px 0 32px;
+    border-right: 1px solid rgba(251,250,247,.15);
+  }
+  .value:first-child{ padding-left: 0; }
+  .value:last-child{ border-right: 0; padding-right: 0; }
+  .value .num{
+    font-family: var(--serif); font-size: 48px; font-weight: 300;
+    color: #d4b88a;
+    margin-bottom: 32px;
+    display: block;
+  }
+  .value h3{
+    color: var(--bg); margin-bottom: 16px;
+    font-size: 24px;
+  }
+  .value p{
+    color: rgba(251,250,247,.72);
+    font-size: 15px; line-height: 1.7;
+  }
+
+  /* ============ CONTACT ============ */
+  .contact{ background: var(--paper); }
+  .contact-grid{
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--line);
+  }
+  .contact-info{
+    padding: clamp(40px, 5vw, 72px);
+    display:flex; flex-direction: column; justify-content: space-between;
+    gap: 48px;
+  }
+  .contact-info h2{ font-size: clamp(36px, 4vw, 52px); }
+  .contact-info h2 em{ font-style: italic; color: var(--accent-deep); }
+  .contact-info p{ font-size: 17px; line-height: 1.7; max-width: 460px; }
+  .contact-block{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 28px 36px;
+    padding-top: 36px; border-top: 1px solid var(--line);
+  }
+  .contact-block .k{
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .contact-block .v{
+    font-family: var(--serif); font-size: 22px; line-height: 1.4;
+    color: var(--ink);
+  }
+  .contact-block .v a{ border-bottom: 1px solid var(--bronze); padding-bottom: 2px; }
+  .contact-block .v a:hover{ color: var(--accent-deep); }
+
+  .contact-map{
+    min-height: 520px;
+    position: relative;
+    border-left: 1px solid var(--line);
+  }
+  .contact-map iframe{
+    width:100%; height:100%; border:0;
+    filter: grayscale(.6) contrast(.95);
+    position:absolute; inset:0;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer{
+    background: var(--ink);
+    color: rgba(251,250,247,.72);
+    padding: 72px 0 28px;
+  }
+  .footer-top{
+    display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(251,250,247,.12);
+  }
+  .footer-brand .mark{ color: var(--bg); width: 40px; height: 40px; margin-bottom: 18px; }
+  .footer-brand .mark svg{ width:100%; height:100%; }
+  .footer-brand .name{
+    font-family: var(--serif); font-size: 22px; letter-spacing: .14em;
+    color: var(--bg); font-weight: 500;
+  }
+  .footer-brand .tag{
+    margin-top: 16px; max-width: 320px;
+    font-size: 15px; line-height: 1.65;
+    color: #f8f7f3;
+  }
+  .footer h4{
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--bg); font-weight: 600;
+    margin: 0 0 22px;
+  }
+  .footer ul{ list-style:none; padding:0; margin:0; display:grid; gap: 12px; }
+  .footer ul a{ font-size: 14px; }
+  .footer ul a:hover{ color: var(--bg); }
+  .footer-bottom{
+    display:flex; justify-content: space-between; align-items: center;
+    padding-top: 28px; flex-wrap: wrap; gap: 16px;
+    font-size: 12px; letter-spacing: .06em;
+  }
+  .footer-bottom .legal{ display:flex; gap: 28px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-photo{ aspect-ratio: 4/3; }
+    .sec-head{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-photo{ position: static; aspect-ratio: 4/3; }
+    .brand-grid{ grid-template-columns: repeat(2, 1fr); }
+    .brand-card,
+    .brand-card:nth-child(1),
+    .brand-card:nth-child(2),
+    .brand-card:nth-child(3),
+    .brand-card:nth-child(4),
+    .brand-card:nth-child(5){ grid-column: span 1; }
+    .values-grid{ grid-template-columns: repeat(2, 1fr); border-bottom: 1px solid rgba(251,250,247,.15); }
+    .value{ border-right: 0; border-bottom: 1px solid rgba(251,250,247,.15); padding: 40px 0; }
+    .value:nth-child(odd){ padding-right: 24px; border-right: 1px solid rgba(251,250,247,.15); }
+    .value:last-child{ border-bottom: 0; }
+    .contact-grid{ grid-template-columns: 1fr; }
+    .contact-map{ min-height: 360px; border-left: 0; border-top: 1px solid var(--line); }
+    .footer-top{ grid-template-columns: 1fr 1fr; gap: 36px; }
+    .hero-stats{ grid-template-columns: 1fr; }
+    .stat{ border-right: 0; border-bottom: 1px solid var(--line); padding: 24px; }
+    .stat:last-child{ border-bottom: 0; }
+  }
+  @media (max-width: 880px){
+    .nav-links{ display: none; }
+    .menu-toggle{
+      display:flex; flex-direction: column; gap: 5px;
+      width: 32px; height: 32px;
+      align-items: flex-end; justify-content: center;
+    }
+    .menu-toggle span{ display:block; width: 24px; height: 1.5px; background: var(--ink); }
+    .menu-toggle span:nth-child(2){ width: 16px; }
+    .nav-links{ display: none; }
+    .nav-cta{ display: none; }
+    .brand-medallion{ width: 96px; height: 96px; margin-bottom: -22px; }
+    .brand-grid{ grid-template-columns: 1fr; }
+    .brand-card{ grid-column: span 1 !important; }
+    .footer-top{ grid-template-columns: 1fr; }
+    .about-meta{ grid-template-columns: 1fr; gap: 22px; }
+    .contact-block{ grid-template-columns: 1fr; gap: 22px; }
+    .contact-info{ gap: 32px; }
+  }
+
+  /* ============ MAP HOVERS ============ */
+  .contact-map iframe:hover{ filter: grayscale(0) contrast(1); transition: filter .4s ease; }
+
+  /* ============ POSUNOUT HINT ============ */
+  .scroll-hint{
+    position: absolute; left: var(--pad); bottom: 30px;
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--muted);
+    display:flex; align-items: center; gap: 14px;
+  }
+  .scroll-hint::before{
+    content:""; width: 50px; height: 1px; background: var(--muted);
+    animation: scrollLine 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollLine{
+    0%,100%{ transform: scaleX(.5); transform-origin: left; opacity:.5;}
+    50%{ transform: scaleX(1); transform-origin: left; opacity:1;}
+  }
+
+  @media (max-width: 960px){ .scroll-hint{ display:none; } }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="wrap nav">
+    <a class="brand-medallion" href="#top" aria-label="ETI Holding a.s.">
+      <img src="assets/logo_transparent.png?v=2" alt="ETI Holding a.s."/>
+    </a>
+    <nav class="nav-links" aria-label="Hlavní navigace">
+      <a href="#about">O holdingu</a>
+      <a href="#brands">Naše značky</a>
+      <a href="#values">Hodnoty</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Spojte se s námi</a>
+    <button class="menu-toggle" aria-label="Otevřít menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-watermark" id="hero-watermark"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span>Skupina značek · Praha</span>
+          <h1>Budujeme&nbsp;hodnoty,<br/>které <em>rostou</em>&nbsp;v&nbsp;čase.</h1>
+          <p class="hero-lede">
+            ETI Holding sdružuje pět nezávislých značek z oblasti rezidenčního bydlení,
+            stavebnictví, personalistiky, gastronomie a komerčních prostor. Spojuje je
+            společný důraz na řemeslo, dlouhodobou hodnotu a poctivý vztah ke klientům.
+          </p>
+          <div class="hero-actions">
+            <a href="#brands" class="btn">Prozkoumat značky <span class="arrow">→</span></a>
+            <a href="#about" class="btn ghost">O holdingu</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=1200&q=80" alt="Moderní architektura" />
+          </div>
+          <div class="hero-tag">Pět značek &middot; jeden rukopis</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">POSUŇ NÍŽE</div>
+  </section>
+
+  <!-- ================= STATS (full-bleed wrap) ================= -->
+  <div class="wrap">
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="num">5<sup>značek</sup></div>
+        <div class="lbl">Pod jednou střechou</div>
+      </div>
+      <div class="stat">
+        <div class="num">2014<sup></sup></div>
+        <div class="lbl">Rok založení</div>
+      </div>
+      <div class="stat">
+        <div class="num">50<sup></sup></div>
+        <div class="lbl">Lidí v týmu</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="dot"></span>O holdingu</span>
+        <h2>Jedna skupina, <em>pět&nbsp;oborů</em>, jeden&nbsp;standard kvality.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="https://images.unsplash.com/photo-1592906209472-a36b1f3782ef?auto=format&fit=crop&w=1000&q=80" alt="Pražská architektura — sídlo holdingu" />
+        </div>
+        <div class="about-content">
+          <p>
+            ETI Holding vznikl s jednoduchou ambicí — propojit obory, ve kterých umíme odvést
+            poctivou práci, a stavět z nich značky, které obstojí v čase.
+          </p>
+          <p>
+            Naše skupina dnes zastřešuje pět samostatných značek. Každá z nich má vlastní
+            tým, vlastní zákazníky a vlastní příběh — společný jim je nárok na detail,
+            ekonomická střízlivost a respekt k lidem, se kterými pracujeme. Holding není
+            o jménu na faktuře; je o sdíleném standardu.
+          </p>
+          <p>
+            Sídlíme v Praze, působíme v celé České republice. Investujeme do projektů, které
+            mají hmatatelný výsledek — domov, ve kterém se dobře žije; práci, kterou má smysl
+            dělat; jídlo, které stojí za to si pamatovat.
+          </p>
+
+          <div class="about-meta">
+            <div class="row">
+              <div class="k">Sídlo</div>
+              <div class="v">Praha — Staré Město</div>
+            </div>
+            <div class="row">
+              <div class="k">Působnost</div>
+              <div class="v">Česká republika</div>
+            </div>
+            <div class="row">
+              <div class="k">Obory</div>
+              <div class="v">Reality, Stavby, HR,<br/>Gastronomie, Komerce</div>
+            </div>
+            <div class="row">
+              <div class="k">Filosofie</div>
+              <div class="v">Hodnoty před objemem</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BRANDS ================= -->
+  <section class="brands" id="brands">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="dot"></span>Naše značky</span>
+        <h2>Pět nezávislých značek, <em>jeden&nbsp;rukopis.</em></h2>
+      </div>
+
+      <div class="brand-grid">
+
+        <!-- 1 — Apartmány Borská -->
+        <article class="brand-card">
+          <div class="photo">
+            <img src="assets/photo-borska.jpg" alt="Apartmány Borská" />
+          </div>
+          <div class="body has-logo">
+            <div class="brand-logo-mark"><img src="assets/logo-borska.jpg" alt="Apartmány Borská"/></div>
+            <span class="cat">Ubytování · Plzeň</span>
+            <h3>Apartmány Borská</h3>
+            <div class="tagline">Druhý domov pro krátké i delší pobyty.</div>
+            <p>
+              Plně vybavené apartmány v centru Plzně pro služební cesty, rodinné výjezdy i
+              dlouhodobé pobyty. Klid soukromého bydlení, servis hotelu.
+            </p>
+            <a href="#" class="more">Web značky
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 2 — JProgress Group -->
+        <article class="brand-card">
+          <div class="photo">
+            <img src="assets/photo-jprogress.jpg" alt="JProgress Group" />
+          </div>
+          <div class="body has-logo">
+            <div class="brand-logo-mark"><img src="assets/logo-jprogress.jpg" alt="JProgress Group"/></div>
+            <span class="cat">Personalistika</span>
+            <h3>JProgress Group</h3>
+            <div class="tagline">Lidé na správných místech.</div>
+            <p>
+              Personální agentura zaměřená na výrobu, logistiku a stavebnictví. Spojujeme firmy
+              s prověřenými lidmi — bez agenturních zkratek a se závazkem k oběma stranám.
+            </p>
+            <a href="#" class="more">Web značky
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 3 — AZ Factory -->
+        <article class="brand-card">
+          <div class="photo">
+            <img src="assets/photo-azfactory.jpg" alt="AZ Factory" />
+          </div>
+          <div class="body has-logo">
+            <div class="brand-logo-mark"><img src="assets/logo-azfactory.jpg" alt="AZ Factory"/></div>
+            <span class="cat">Stavebnictví</span>
+            <h3>AZ Factory</h3>
+            <div class="tagline">Stavíme jako pro&nbsp;sebe.</div>
+            <p>
+              Realizace rezidenčních a komerčních staveb na klíč. Od přípravy projektu po
+              kolaudaci — s důrazem na materiál, technologie a řemeslnou preciznost.
+            </p>
+            <a href="#" class="more">Web značky
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 4 — Jídelna U Koně -->
+        <article class="brand-card">
+          <div class="photo">
+            <img src="assets/photo-jidelna.jpg" alt="Jídelna U Koně" />
+          </div>
+          <div class="body has-logo">
+            <div class="brand-logo-mark"><img src="assets/logo-jidelna.jpg" alt="Jídelna U Koně"/></div>
+            <span class="cat">Gastronomie</span>
+            <h3>Jídelna U Koně</h3>
+            <div class="tagline">Poctivé jídlo, každý den.</div>
+            <p>
+              Kuchyně postavená na sezónních surovinách a domácí klasice. Denní menu pro firmy
+              i veřejnost, catering a rozvoz pro pracovní obědy.
+            </p>
+            <a href="#" class="more">Web značky
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 5 — Coming soon -->
+        <article class="brand-card soon">
+          <div class="photo" style="background: linear-gradient(135deg, #0a1947, #1a2a6b);">
+            <img src="assets/photo-plzen.jpg" alt="Kancelářský dům v Plzni — připravujeme" />
+          </div>
+          <div class="body">
+            <span class="badge">Připravujeme</span>
+            <h3>Nový projekt</h3>
+            <div class="tagline">Práce, wellness a fitness pod jednou střechou.</div>
+            <p>
+              Moderní kancelářský dům v Plzni s vlastním wellness a fitness zázemím. Otevíráme
+              v roce 2026 — pracovní prostředí, které dává smysl tělu i hlavě.
+            </p>
+            <a href="#contact" class="more">Více informací
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VALUES ================= -->
+  <section class="values" id="values">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="dot"></span>Co nás spojuje</span>
+        <h2>Čtyři principy, podle&nbsp;kterých <em>pracujeme&nbsp;každý&nbsp;den.</em></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <span class="num">01</span>
+          <h3>Společný cíl</h3>
+          <p>Každá značka má svou identitu, ale jeden směr. Růst, který má smysl pro klienty, lidi v týmu i okolí.</p>
+        </div>
+        <div class="value">
+          <span class="num">02</span>
+          <h3>Vyváženost</h3>
+          <p>Nestavíme na rychlosti za každou cenu. Hledáme rovnováhu mezi ambicí, ekonomikou a kvalitou výsledku.</p>
+        </div>
+        <div class="value">
+          <span class="num">03</span>
+          <h3>Růst zavazuje</h3>
+          <p>Se vším, co se nám daří, roste i odpovědnost — ke klientům, partnerům a každému, kdo s námi pracuje.</p>
+        </div>
+        <div class="value">
+          <span class="num">04</span>
+          <h3>Vždy připraveni</h3>
+          <p>Spolehlivost je tichá ctnost. Říkáme, co uděláme — a uděláme, co jsme řekli. I když to není pohodlné.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow"><span class="dot"></span>Kontakt</span>
+        <h2>Promluvme si o tom, <em>co&nbsp;chystáte.</em></h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div>
+            <h2 style="font-size: clamp(28px, 3vw, 36px);">Spojte se&nbsp;s&nbsp;námi.</h2>
+            <p style="margin-top:18px;">
+              Jste developer, partner nebo zájemce o spolupráci s některou z našich značek?
+              Napište nám — odpovídáme zpravidla do dvou pracovních dní.
+            </p>
+          </div>
+
+          <div class="contact-block">
+            <div>
+              <div class="k">E&#8209;mail</div>
+              <div class="v"><a href="mailto:info@etigroup.cz">info@etigroup.cz</a></div>
+            </div>
+            <div>
+              <div class="k">Sídlo</div>
+              <div class="v">Dlouhá 715/38<br/>110 00 Praha — Staré Město</div>
+            </div>
+            <div>
+              <div class="k">IČO</div>
+              <div class="v">21 17 64 51</div>
+            </div>
+            <div>
+              <div class="k">Forma</div>
+              <div class="v">Akciová společnost</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <iframe
+            title="Sídlo ETI Holding — Dlouhá 715/38, Praha"
+            src="https://www.google.com/maps?q=Dlouh%C3%A1%20715%2F38%2C%20110%2000%20Praha%201&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo_symbol_white.png" alt="ETI Holding a.s." style="height:72px; width:auto; margin-bottom:24px; display:block;"/>
+        <div class="name" style="display:none;">ETI Holding a.s.</div>
+        <p class="tag">Skupina značek z oblasti bydlení, stavby, personalistiky, gastronomie a komerčních prostor.</p>
+      </div>
+
+      <div>
+        <h4>Značky</h4>
+        <ul>
+          <li><a href="#">Apartmány Borská</a></li>
+          <li><a href="#">JProgress Group</a></li>
+          <li><a href="#">AZ Factory</a></li>
+          <li><a href="#">Jídelna U Koně</a></li>
+          <li><a href="#">Kancelářský dům Plzeň</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Holding</h4>
+        <ul>
+          <li><a href="#about">O holdingu</a></li>
+          <li><a href="#values">Hodnoty</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a href="#">Kariéra</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>ETI Holding a.s.</li>
+          <li>Dlouhá 715/38</li>
+          <li>110 00 Praha</li>
+          <li>IČO: 21176451</li>
+          <li><a href="mailto:info@etigroup.cz">info@etigroup.cz</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 ETI Holding a.s. — Všechna práva vyhrazena.</div>
+      <div class="legal">
+        <a href="#">Ochrana údajů</a>
+        <a href="#">Cookies</a>
+        <a href="#">Tiráž</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky header border
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    if (window.scrollY > 12) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Parallax na watermark v hero sekci
+  const wm = document.getElementById('hero-watermark');
+  if (wm && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    let ticking = false;
+    const updateParallax = () => {
+      const y = window.scrollY;
+      // Jemný posun + rotace podle scrollu
+      const t = Math.min(y, 800);
+      wm.style.transform = `translateY(calc(-50% + ${t * 0.25}px)) rotate(${-8 + t * 0.04}deg)`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking){
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+</script>
+
+</body>
+</html>
