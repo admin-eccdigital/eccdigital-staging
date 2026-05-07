@@ -133,7 +133,7 @@
   }
   .nav-cta:hover{ background: var(--ink); color: var(--bg); }
 
-  .menu-toggle{ display:none; }
+  .menu-toggle{ display:none; margin-left: auto; }
 
   /* ============ HERO ============ */
   .hero{
@@ -554,9 +554,10 @@
     .brand-card:nth-child(4),
     .brand-card:nth-child(5){ grid-column: span 1; }
     .values-grid{ grid-template-columns: repeat(2, 1fr); border-bottom: 1px solid rgba(251,250,247,.15); }
-    .value{ border-right: 0; border-bottom: 1px solid rgba(251,250,247,.15); padding: 40px 0; }
+    .value{ border-right: 0; border-bottom: 1px solid rgba(251,250,247,.15); padding: 40px 16px; }
+    .value:first-child{ padding-left: 16px; }
     .value:nth-child(odd){ padding-right: 24px; border-right: 1px solid rgba(251,250,247,.15); }
-    .value:last-child{ border-bottom: 0; }
+    .value:last-child{ border-bottom: 0; padding-right: 16px; }
     .contact-grid{ grid-template-columns: 1fr; }
     .contact-map{ min-height: 360px; border-left: 0; border-top: 1px solid var(--line); }
     .footer-top{ grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -573,7 +574,20 @@
     }
     .menu-toggle span{ display:block; width: 24px; height: 1.5px; background: var(--ink); }
     .menu-toggle span:nth-child(2){ width: 16px; }
-    .nav-links{ display: none; }
+    .nav-links{
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(251,250,247,.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      z-index: 100;
+    }
+    .nav-links.open{ display: flex; }
+    .nav-links a{ font-size: 20px; letter-spacing: .08em; }
     .nav-cta{ display: none; }
     .brand-medallion{ width: 96px; height: 96px; margin-bottom: -22px; }
     .brand-grid{ grid-template-columns: 1fr; }
@@ -987,6 +1001,16 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
 
   // Parallax na watermark v hero sekci
   const wm = document.getElementById('hero-watermark');
