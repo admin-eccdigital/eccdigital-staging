@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import "./smolik.css"
 
 export const metadata: Metadata = {
   title: "Ing. Pavel Smolík — Kompletní stavební inženýring",

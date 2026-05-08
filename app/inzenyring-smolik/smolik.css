@@ -112,6 +112,26 @@
   }
 }
 
+/* Button hover */
+.smolik-btn {
+  transition: background 200ms ease;
+}
+.smolik-btn:hover {
+  background: #2f5d8a !important;
+}
+
+/* Reference photo grid responsive */
+@media (max-width: 900px) {
+  .smolik-ref-photo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 600px) {
+  .smolik-ref-photo-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
