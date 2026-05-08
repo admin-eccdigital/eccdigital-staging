@@ -19,7 +19,7 @@ export function About() {
               </h2>
               <p className="lead-light">
                 ECC Digital je česká digitální agentura, která od roku 2015 řídí kompletní digitální projekty pro
-                středně velké B2B i B2C firmy. Neprodáváme jednotlivé služby — staráme se o strategii, výkon i provoz pod
+                středně velké, nejen české B2B i B2C firmy. Neprodáváme jednotlivé služby — staráme se o strategii, výkon i provoz pod
                 jednou střechou.
               </p>
               <ul className="about-list">
