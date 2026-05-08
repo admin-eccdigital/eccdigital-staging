@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 
 export const BASE = "/eccdigital-staging/inzenyring-smolik"
@@ -51,7 +51,25 @@ export function useFadeUp() {
   return ref
 }
 
+const navLinks = [
+  ["Služby", `${ROUTE}/sluzby/`],
+  ["Reference", `${ROUTE}/reference/`],
+  ["O mně", `${ROUTE}/#kvalifikace`],
+  ["Kontakt", `${ROUTE}/#kontakt`],
+]
+
 export function Nav() {
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => { document.body.style.overflow = "" }
+  }, [open])
+
   return (
     <header
       style={{
@@ -105,6 +123,7 @@ export function Nav() {
             }}
           />
           <span
+            className="smolik-logo-sub"
             style={{
               fontFamily: T.mono,
               fontWeight: 500,
@@ -121,12 +140,7 @@ export function Nav() {
           </span>
         </Link>
         <nav style={{ display: "flex", gap: 32 }} className="smolik-nav-links">
-          {[
-            ["Služby", `${ROUTE}/sluzby/`],
-            ["Reference", `${ROUTE}/reference/`],
-            ["O mně", `${ROUTE}/#kvalifikace`],
-            ["Kontakt", `${ROUTE}/#kontakt`],
-          ].map(([label, href]) => (
+          {navLinks.map(([label, href]) => (
             <Link
               key={href}
               href={href}
@@ -143,6 +157,156 @@ export function Nav() {
             </Link>
           ))}
         </nav>
+        <button
+          className="smolik-burger"
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 4,
+            position: "relative",
+            width: 28,
+            height: 20,
+          }}
+        >
+          <span
+            style={{
+              position: "absolute",
+              left: 0,
+              width: 28,
+              height: 2,
+              background: T.ink,
+              transition: "transform 250ms ease, opacity 250ms ease",
+              top: open ? 9 : 0,
+              transform: open ? "rotate(45deg)" : "none",
+            }}
+          />
+          <span
+            style={{
+              position: "absolute",
+              left: 0,
+              width: 28,
+              height: 2,
+              background: T.ink,
+              top: 9,
+              opacity: open ? 0 : 1,
+              transition: "opacity 250ms ease",
+            }}
+          />
+          <span
+            style={{
+              position: "absolute",
+              left: 0,
+              width: 28,
+              height: 2,
+              background: T.ink,
+              transition: "transform 250ms ease, opacity 250ms ease",
+              top: open ? 9 : 18,
+              transform: open ? "rotate(-45deg)" : "none",
+            }}
+          />
+        </button>
+      </div>
+
+      {/* Mobile overlay */}
+      <div
+        className="smolik-mobile-menu"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          background: T.paper,
+          zIndex: 49,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "80px 32px 40px",
+          opacity: open ? 1 : 0,
+          pointerEvents: open ? "auto" : "none",
+          transition: "opacity 250ms ease",
+        }}
+      >
+        <nav style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {navLinks.map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setOpen(false)}
+              style={{
+                fontFamily: T.display,
+                fontWeight: 600,
+                fontSize: 32,
+                letterSpacing: "-0.02em",
+                color: T.ink,
+                textDecoration: "none",
+                padding: "10px 0",
+                borderBottom: `1px solid ${T.bone}`,
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        <div style={{ marginTop: 40 }}>
+          <div
+            style={{
+              fontFamily: T.mono,
+              fontSize: 10,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase" as const,
+              color: T.steel,
+              marginBottom: 12,
+            }}
+          >
+            Hlavní činnosti
+          </div>
+          <div
+            style={{
+              fontFamily: T.body,
+              fontSize: 14,
+              lineHeight: 1.8,
+              color: T.slate,
+            }}
+          >
+            Inženýrská činnost · Stavební dozor
+            <br />
+            Projektová příprava · Konzultace
+          </div>
+        </div>
+
+        <div style={{ marginTop: 32 }}>
+          <a
+            href="tel:+420602260119"
+            style={{
+              fontFamily: T.mono,
+              fontSize: 18,
+              color: T.ink,
+              textDecoration: "none",
+              display: "block",
+            }}
+          >
+            +420 602 260 119
+          </a>
+          <a
+            href="mailto:smolik.inzenyring@seznam.cz"
+            style={{
+              fontFamily: T.mono,
+              fontSize: 14,
+              color: T.steel,
+              textDecoration: "none",
+              display: "block",
+              marginTop: 8,
+            }}
+          >
+            smolik.inzenyring@seznam.cz
+          </a>
+        </div>
       </div>
     </header>
   )

@@ -104,6 +104,13 @@
   .smolik-nav-links {
     display: none !important;
   }
+  .smolik-burger {
+    display: block !important;
+    z-index: 51;
+  }
+  .smolik-logo-sub {
+    font-size: 7px !important;
+  }
   .smolik-h1 {
     font-size: 42px !important;
   }
