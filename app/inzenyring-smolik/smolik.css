@@ -120,6 +120,16 @@
   background: #2f5d8a !important;
 }
 
+/* Reference tab nav */
+.smolik-ref-tab {
+  transition: color 200ms ease, border-color 200ms ease;
+  border-bottom: 2px solid transparent !important;
+}
+.smolik-ref-tab:hover {
+  color: #2f5d8a !important;
+  border-bottom-color: #2f5d8a !important;
+}
+
 /* Reference photo grid responsive */
 @media (max-width: 900px) {
   .smolik-ref-photo-grid {

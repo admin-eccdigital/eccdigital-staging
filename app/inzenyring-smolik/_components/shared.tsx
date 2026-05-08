@@ -192,14 +192,14 @@ export function Contact() {
             >
               Ing. Pavel Smolík
             </div>
-            <div style={{ color: "rgba(255,255,255,0.65)" }}>
+            <div style={{ color: "rgba(255,255,255,0.8)" }}>
               Popelnicová 1218/61
               <br />
               312 00 Plzeň
             </div>
             <div
               style={{
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.65)",
                 marginTop: 14,
                 fontSize: 13,
               }}
@@ -228,7 +228,7 @@ export function Contact() {
               style={{
                 fontFamily: T.mono,
                 fontSize: 14,
-                color: T.steel,
+                color: "#6ba3d6",
                 textDecoration: "none",
                 marginTop: 4,
                 display: "inline-block",
@@ -242,7 +242,7 @@ export function Contact() {
                 marginTop: 20,
                 fontFamily: T.mono,
                 fontSize: 12,
-                color: "rgba(255,255,255,0.4)",
+                color: "rgba(255,255,255,0.6)",
                 lineHeight: 1.7,
               }}
             >
@@ -263,11 +263,11 @@ export function Contact() {
             fontFamily: T.mono,
             fontSize: 11,
             letterSpacing: "0.16em",
-            color: "rgba(255,255,255,0.45)",
+            color: "rgba(255,255,255,0.6)",
           }}
           className="smolik-footer"
         >
-          <span>© 2025 ING. PAVEL SMOLÍK</span>
+          <span>© {new Date().getFullYear()} ING. PAVEL SMOLÍK</span>
           <span>PLZEŇ · CZ</span>
         </div>
       </div>

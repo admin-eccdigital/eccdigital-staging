@@ -449,7 +449,7 @@ function Qualifications() {
         >
           <li>ČVUT — fakulta stavební</li>
           <li>Praxe v oboru — přes 40 let</li>
-          <li>Působnost — Plzeň a Plzeňský kraj</li>
+          <li>Působnost — Plzeň a Praha</li>
         </ul>
       </div>
     </section>

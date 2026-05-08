@@ -295,8 +295,63 @@ export default function ReferencePage() {
         </div>
       </section>
 
+      {/* Rozcestník */}
+      <nav
+        style={{
+          padding: "0 56px",
+          maxWidth: 1440,
+          margin: "0 auto",
+        }}
+        className="smolik-section-pad"
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: 0,
+            borderBottom: `1px solid ${T.bone}`,
+          }}
+        >
+          {[
+            { label: "Projekty", anchor: "#projekty", count: projekty.length },
+            { label: "Realizace", anchor: "#realizace", count: realizace.length },
+          ].map((item) => (
+            <a
+              key={item.anchor}
+              href={item.anchor}
+              className="smolik-ref-tab"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "20px 28px 18px",
+                fontFamily: T.body,
+                fontSize: 14,
+                fontWeight: 500,
+                color: T.ink,
+                textDecoration: "none",
+                borderBottom: `2px solid ${T.steel}`,
+                marginBottom: -1,
+              }}
+            >
+              {item.label}
+              <span
+                style={{
+                  fontFamily: T.mono,
+                  fontSize: 11,
+                  color: T.fog,
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {item.count}
+              </span>
+            </a>
+          ))}
+        </div>
+      </nav>
+
       {/* Projekční činnost */}
       <section
+        id="projekty"
         ref={refP}
         style={{
           padding: "56px 56px",
@@ -336,6 +391,7 @@ export default function ReferencePage() {
 
       {/* Realizace */}
       <section
+        id="realizace"
         ref={refR}
         style={{
           padding: "56px 56px",
@@ -367,9 +423,64 @@ export default function ReferencePage() {
             </div>
           </div>
           <div>
-            {realizace.map((p, i) => (
-              <ProjectGroup key={p.title} project={p} index={i} />
-            ))}
+            {realizace
+              .filter((p) => p.photos.length > 1)
+              .map((p, i) => (
+                <ProjectGroup key={p.title} project={p} index={i} />
+              ))}
+            {/* Single-photo items side by side */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 12,
+                padding: "40px 0",
+                borderTop: `1px solid ${T.bone}`,
+              }}
+              className="smolik-ref-photo-grid"
+            >
+              {realizace
+                .filter((p) => p.photos.length === 1)
+                .map((p, i) => (
+                  <div key={p.title} data-fade>
+                    <div
+                      style={{
+                        position: "relative",
+                        aspectRatio: "4/3",
+                        background: T.bone,
+                        backgroundImage: `url(${BASE}/foto/${p.photos[0].src})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        overflow: "hidden",
+                      }}
+                    />
+                    <div style={{ marginTop: 10 }}>
+                      <span
+                        style={{
+                          fontFamily: T.mono,
+                          fontSize: 12,
+                          color: T.fog,
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        {String(realizace.filter((r) => r.photos.length > 1).length + i + 1).padStart(2, "0")}
+                      </span>
+                      <h3
+                        style={{
+                          fontFamily: T.display,
+                          fontWeight: 600,
+                          fontSize: 17,
+                          letterSpacing: "-0.015em",
+                          margin: "4px 0 0",
+                          color: T.ink,
+                        }}
+                      >
+                        {p.title}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </section>
