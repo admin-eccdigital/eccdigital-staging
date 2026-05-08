@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kariéra — ETI Holding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f8f7f3;
+    --bg-2: #efede7;
+    --ink: #0a1947;
+    --ink-2: #2e3a66;
+    --muted: #8a8fa3;
+    --line: #ddd9cf;
+    --accent: #0a1947;
+    --accent-deep: #060f33;
+    --bronze: #b08856;
+    --paper: #ffffff;
+    --serif: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw: 1320px;
+    --pad: clamp(20px, 4vw, 64px);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{ display:block; max-width:100%; }
+  a{ color: inherit; text-decoration: none; }
+  button{ font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+  h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -.01em; margin: 0; color: var(--ink); }
+  h1{ font-size: clamp(36px, 5vw, 72px); line-height: 1.06; letter-spacing: -.02em; }
+  h2{ font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; }
+  h3{ font-size: clamp(20px, 1.8vw, 26px); line-height: 1.25; }
+  p{ margin: 0; color: var(--ink-2); text-wrap: pretty; }
+
+  .header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,250,247,.78);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; height: 72px; gap: 24px;
+  }
+  .nav .logo{ height: 36px; width: auto; }
+  .nav .back{
+    font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-2); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .nav .back:hover{ color: var(--ink); }
+  .nav .back svg{ transition: transform .3s ease; }
+  .nav .back:hover svg{ transform: translateX(-3px); }
+  .nav-spacer{ flex:1; }
+
+  .hero-career{
+    padding: clamp(80px, 10vw, 160px) 0 clamp(60px, 8vw, 100px);
+    text-align: center;
+  }
+  .hero-career .eyebrow{
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--muted); display: block; margin-bottom: 28px;
+  }
+  .hero-career .dot{
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--bronze); border-radius: 50%;
+    margin-right: 10px; vertical-align: middle; transform: translateY(-1px);
+  }
+  .hero-career h1 em{ font-style: italic; color: var(--accent-deep); font-weight: 300; }
+  .hero-career .lede{
+    max-width: 620px; margin: 32px auto 0;
+    font-size: 18px; line-height: 1.75; color: var(--ink-2);
+  }
+
+  .career-content{
+    padding: 0 0 clamp(80px, 10vw, 140px);
+  }
+  .career-grid{
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 5vw, 80px);
+    max-width: 1000px; margin: 0 auto;
+  }
+  .career-card{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: clamp(32px, 4vw, 56px);
+    transition: border-color .3s ease;
+  }
+  .career-card:hover{ border-color: var(--ink); }
+  .career-card .num{
+    font-family: var(--serif); font-size: 48px; font-weight: 300;
+    color: var(--bronze); display: block; margin-bottom: 24px;
+  }
+  .career-card h3{ margin-bottom: 16px; }
+  .career-card p{ font-size: 15px; line-height: 1.7; }
+
+  .career-cta{
+    text-align: center;
+    padding: clamp(60px, 8vw, 100px) 0;
+    background: var(--accent-deep);
+    color: var(--bg);
+  }
+  .career-cta h2{ color: var(--bg); margin-bottom: 20px; }
+  .career-cta h2 em{ font-style: italic; color: #d4b88a; font-weight: 300; }
+  .career-cta p{
+    color: rgba(251,250,247,.75);
+    font-size: 17px; line-height: 1.7;
+    max-width: 540px; margin: 0 auto 40px;
+  }
+  .career-cta .btn{
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 32px;
+    font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid var(--bg);
+    background: var(--bg); color: var(--ink);
+    transition: background .25s ease, color .25s ease;
+  }
+  .career-cta .btn:hover{ background: transparent; color: var(--bg); }
+
+  .footer{
+    background: var(--ink); color: rgba(251,250,247,.72);
+    padding: 28px 0;
+  }
+  .footer-inner{
+    display:flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 12px; letter-spacing: .06em;
+  }
+  .footer-inner a:hover{ color: var(--bg); }
+
+  @media (max-width: 768px){
+    .career-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap nav">
+    <a href="./" class="back">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13 5H1M5 9L1 5l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ETI Holding
+    </a>
+    <div class="nav-spacer"></div>
+    <a href="./#contact" style="font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-2); font-weight:500;">Kontakt</a>
+  </div>
+</header>
+
+<section class="hero-career">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Kariéra</span>
+    <h1>Chtěli byste v&nbsp;tom <em>jet&nbsp;s&nbsp;námi?</em></h1>
+    <p class="lede">
+      Hledáme lidi, kteří chtějí odvádět poctivou práci a růst spolu s námi.
+      Pokud vás baví stavět věci, které mají smysl, ozvěte se — rádi si popovídáme.
+    </p>
+  </div>
+</section>
+
+<section class="career-content">
+  <div class="wrap">
+    <div class="career-grid">
+      <div class="career-card">
+        <span class="num">01</span>
+        <h3>Řemeslo a standard</h3>
+        <p>Věříme, že dobrá práce vzniká tam, kde se potkává zkušenost s nárokem na detail.
+           Každá naše značka má vlastní tým — hledáme spolehlivé lidi, kteří chtějí být součástí
+           konkrétního příběhu.</p>
+      </div>
+      <div class="career-card">
+        <span class="num">02</span>
+        <h3>Růst, který má smysl</h3>
+        <p>Nehledáme do počtu. Rosteme organicky a zodpovědně, proto nám záleží na každém člověku
+           v týmu. Nabízíme stabilní zázemí skupiny s krátkými rozhodovacími cestami.</p>
+      </div>
+      <div class="career-card">
+        <span class="num">03</span>
+        <h3>Kde působíme</h3>
+        <p>Praha, Plzeň a další města v celé ČR. Obory: stavebnictví, development, personalistika,
+           gastronomie a ubytovací služby. Pokud máte zkušenosti v některém z nich, budeme rádi.</p>
+      </div>
+      <div class="career-card">
+        <span class="num">04</span>
+        <h3>Jak se přidat</h3>
+        <p>Pošlete nám svůj životopis nebo krátkou zprávu o sobě na e-mail níže.
+           I pokud momentálně nemáme otevřenou pozici přesně pro vás — ozvěte se.
+           Správného člověka vždy rádi přivítáme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="career-cta">
+  <div class="wrap">
+    <h2>Pošlete nám <em>životopis.</em></h2>
+    <p>Napište nám pár slov o sobě a přiložte CV. Odpovídáme zpravidla do pěti pracovních dní.</p>
+    <a href="mailto:kariera@etigroup.cz?subject=Kariéra — ETI Holding" class="btn">
+      kariera@etigroup.cz
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>© 2026 ETI Holding a.s. — Všechna práva vyhrazena.</div>
+    <a href="./">Zpět na hlavní stránku</a>
+  </div>
+</footer>
+
+</body>
+</html>
