@@ -1,0 +1,118 @@
+/* Smolik Inzenyring — Konstrukt design system styles */
+
+/* Nav link hover */
+.smolik-nav-link {
+  position: relative;
+}
+.smolik-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: #2f5d8a;
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+.smolik-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Link hover */
+.smolik-link:hover {
+  text-decoration: underline !important;
+}
+
+/* Project card hover */
+.smolik-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 13, 18, 0);
+  transition: background 240ms ease;
+}
+.smolik-project-card:hover .smolik-card-overlay {
+  background: rgba(10, 13, 18, 0.1);
+}
+.smolik-project-card {
+  transition: transform 240ms ease;
+  cursor: default;
+}
+.smolik-project-card:hover {
+  transform: scale(1.01);
+}
+
+/* Responsive — tablet */
+@media (max-width: 900px) {
+  .smolik-nav-inner {
+    padding: 16px 24px !important;
+  }
+  .smolik-nav-links {
+    gap: 20px !important;
+    font-size: 12px !important;
+  }
+  .smolik-hero {
+    padding: 48px 24px 40px !important;
+  }
+  .smolik-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .smolik-h1 {
+    font-size: 56px !important;
+  }
+  .smolik-hero-right {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid #e8e5dd;
+    padding-top: 24px;
+  }
+  .smolik-section-pad {
+    padding: 40px 24px !important;
+  }
+  .smolik-sidebar-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .smolik-service-row {
+    grid-template-columns: 40px 1fr !important;
+    gap: 12px !important;
+  }
+  .smolik-service-row p {
+    grid-column: 1 / -1;
+  }
+  .smolik-projects-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .smolik-qual-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .smolik-contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .smolik-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start !important;
+  }
+}
+
+/* Responsive — mobile */
+@media (max-width: 600px) {
+  .smolik-nav-links {
+    display: none !important;
+  }
+  .smolik-h1 {
+    font-size: 42px !important;
+  }
+  .smolik-projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
