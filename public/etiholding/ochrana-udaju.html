@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ochrana osobních údajů — ETI Holding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f8f7f3; --ink: #0a1947; --ink-2: #2e3a66; --muted: #8a8fa3;
+    --line: #ddd9cf; --accent-deep: #060f33; --bronze: #b08856; --paper: #ffffff;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw: 820px; --pad: clamp(20px, 4vw, 64px);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    font-size: 16px; line-height: 1.7; font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--ink); }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+  .header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,250,247,.78);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; height: 72px; gap: 24px;
+  }
+  .nav .back{
+    font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-2); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .nav .back:hover{ color: var(--ink); }
+
+  .content{
+    padding: clamp(60px, 8vw, 100px) 0 clamp(80px, 10vw, 140px);
+  }
+  .content h1{
+    font-family: var(--serif); font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400; margin: 0 0 12px; color: var(--ink);
+  }
+  .content .meta{
+    font-size: 13px; color: var(--muted); letter-spacing: .06em;
+    margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--line);
+  }
+  .content h2{
+    font-family: var(--sans); font-size: 18px; font-weight: 600;
+    margin: 40px 0 16px; color: var(--ink);
+  }
+  .content p, .content li{ color: var(--ink-2); margin-bottom: 14px; }
+  .content ul{ padding-left: 20px; }
+  .content li{ margin-bottom: 8px; }
+
+  .footer{
+    background: var(--ink); color: rgba(251,250,247,.72); padding: 28px 0;
+  }
+  .footer-inner{
+    max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
+    display:flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; font-size: 12px;
+  }
+  .footer-inner a{ color: rgba(251,250,247,.72); text-decoration: none; }
+  .footer-inner a:hover{ color: #fff; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap nav">
+    <a href="./" class="back">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13 5H1M5 9L1 5l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ETI Holding
+    </a>
+  </div>
+</header>
+
+<div class="content">
+  <div class="wrap">
+    <h1>Zásady ochrany osobních údajů</h1>
+    <p class="meta">Poslední aktualizace: 8. května 2026</p>
+
+    <h2>1. Správce osobních údajů</h2>
+    <p>Správcem osobních údajů je společnost ETI Holding a.s., se sídlem Dlouhá 715/38, Staré Město, 110 00 Praha 1, IČO: 21176451, sp. zn. B 28640 vedená u Městského soudu v Praze (dále jen „správce").</p>
+    <p>Kontaktní osoba pro ochranu osobních údajů: Michal Jireš, tel.: +420 774 943 628, e-mail: <a href="mailto:info@etigroup.cz">info@etigroup.cz</a>.</p>
+
+    <h2>2. Jaké údaje zpracováváme</h2>
+    <p>Prostřednictvím tohoto webu zpracováváme pouze údaje, které nám sami poskytnete:</p>
+    <ul>
+      <li><strong>Kontaktní formulář / e-mail:</strong> jméno, e-mailová adresa, telefonní číslo a obsah zprávy.</li>
+      <li><strong>Kariéra:</strong> jméno, e-mail, životopis a další údaje, které přiložíte ke své žádosti.</li>
+    </ul>
+    <p>Automaticky nezpracováváme žádné analytické ani marketingové údaje. Nepoužíváme nástroje pro sledování návštěvnosti.</p>
+
+    <h2>3. Účel a právní základ zpracování</h2>
+    <ul>
+      <li><strong>Odpověď na váš dotaz</strong> — právním základem je oprávněný zájem správce (čl. 6 odst. 1 písm. f) GDPR).</li>
+      <li><strong>Zpracování žádosti o zaměstnání</strong> — právním základem je provedení opatření před uzavřením smlouvy (čl. 6 odst. 1 písm. b) GDPR).</li>
+    </ul>
+
+    <h2>4. Doba uchování</h2>
+    <p>Údaje z kontaktních dotazů uchováváme po dobu nezbytnou k vyřízení dotazu, nejdéle 12 měsíců. Údaje uchazečů o zaměstnání uchováváme po dobu výběrového řízení, maximálně 6 měsíců od ukončení náboru, pokud neudělíte souhlas s delším uchováním.</p>
+
+    <h2>5. Příjemci údajů</h2>
+    <p>Vaše údaje nepředáváme třetím stranám pro marketingové účely. Údaje mohou být zpracovány:</p>
+    <ul>
+      <li>Poskytovatelem e-mailových služeb (pro doručení vaší zprávy).</li>
+      <li>Poskytovatelem hostingu webu (GitHub Pages / příslušný hosting).</li>
+    </ul>
+
+    <h2>6. Služby třetích stran na webu</h2>
+    <p>Web využívá následující externí služby:</p>
+    <ul>
+      <li><strong>Google Fonts</strong> — načítání písem ze serverů Google. Při načtení stránky se vaše IP adresa přenáší na servery Google LLC, USA.</li>
+      <li><strong>Google Maps</strong> — vložená mapa v sekci Kontakt. Při zobrazení mapy se vaše IP adresa přenáší na servery Google LLC, USA.</li>
+    </ul>
+    <p>Google zpracovává údaje v souladu se svými <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">zásadami ochrany soukromí</a>. Přenos do USA je zajištěn na základě rozhodnutí o přiměřenosti (EU-U.S. Data Privacy Framework).</p>
+
+    <h2>7. Vaše práva</h2>
+    <p>Jako subjekt údajů máte právo:</p>
+    <ul>
+      <li>Na přístup k osobním údajům (čl. 15 GDPR).</li>
+      <li>Na opravu nepřesných údajů (čl. 16 GDPR).</li>
+      <li>Na výmaz údajů (čl. 17 GDPR).</li>
+      <li>Na omezení zpracování (čl. 18 GDPR).</li>
+      <li>Na přenositelnost údajů (čl. 20 GDPR).</li>
+      <li>Vznést námitku proti zpracování (čl. 21 GDPR).</li>
+      <li>Podat stížnost u Úřadu pro ochranu osobních údajů (<a href="https://www.uoou.cz" target="_blank" rel="noopener">www.uoou.cz</a>).</li>
+    </ul>
+
+    <h2>8. Kontakt</h2>
+    <p>Se svými dotazy ohledně ochrany osobních údajů se můžete obrátit na:</p>
+    <p>Michal Jireš<br/>E-mail: <a href="mailto:info@etigroup.cz">info@etigroup.cz</a><br/>Tel.: +420 774 943 628</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>© 2026 ETI Holding a.s.</div>
+    <a href="./">Zpět na hlavní stránku</a>
+  </div>
+</footer>
+
+</body>
+</html>

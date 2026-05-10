@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zásady cookies — ETI Holding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f8f7f3; --ink: #0a1947; --ink-2: #2e3a66; --muted: #8a8fa3;
+    --line: #ddd9cf; --accent-deep: #060f33; --bronze: #b08856; --paper: #ffffff;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --maxw: 820px; --pad: clamp(20px, 4vw, 64px);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family: var(--sans); background: var(--bg); color: var(--ink);
+    font-size: 16px; line-height: 1.7; font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--ink); }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+  .header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,250,247,.78);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; height: 72px; gap: 24px;
+  }
+  .nav .back{
+    font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-2); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .nav .back:hover{ color: var(--ink); }
+
+  .content{
+    padding: clamp(60px, 8vw, 100px) 0 clamp(80px, 10vw, 140px);
+  }
+  .content h1{
+    font-family: var(--serif); font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400; margin: 0 0 12px; color: var(--ink);
+  }
+  .content .meta{
+    font-size: 13px; color: var(--muted); letter-spacing: .06em;
+    margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--line);
+  }
+  .content h2{
+    font-family: var(--sans); font-size: 18px; font-weight: 600;
+    margin: 40px 0 16px; color: var(--ink);
+  }
+  .content p, .content li{ color: var(--ink-2); margin-bottom: 14px; }
+  .content ul{ padding-left: 20px; }
+  .content li{ margin-bottom: 8px; }
+
+  .cookie-table{
+    width: 100%; border-collapse: collapse; margin: 20px 0 32px; font-size: 14px;
+  }
+  .cookie-table th, .cookie-table td{
+    text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line);
+  }
+  .cookie-table th{
+    font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); background: var(--paper);
+  }
+  .cookie-table td{ color: var(--ink-2); }
+
+  .footer{
+    background: var(--ink); color: rgba(251,250,247,.72); padding: 28px 0;
+  }
+  .footer-inner{
+    max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad);
+    display:flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; font-size: 12px;
+  }
+  .footer-inner a{ color: rgba(251,250,247,.72); text-decoration: none; }
+  .footer-inner a:hover{ color: #fff; }
+
+  @media (max-width: 600px){
+    .cookie-table, .cookie-table thead, .cookie-table tbody, .cookie-table th, .cookie-table td, .cookie-table tr{
+      display: block;
+    }
+    .cookie-table thead{ display: none; }
+    .cookie-table td{ padding: 8px 0; border: 0; }
+    .cookie-table td::before{
+      content: attr(data-label);
+      font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 4px;
+    }
+    .cookie-table tr{ padding: 16px 0; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap nav">
+    <a href="./" class="back">
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13 5H1M5 9L1 5l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ETI Holding
+    </a>
+  </div>
+</header>
+
+<div class="content">
+  <div class="wrap">
+    <h1>Zásady cookies</h1>
+    <p class="meta">Poslední aktualizace: 8. května 2026</p>
+
+    <h2>Co jsou cookies</h2>
+    <p>Cookies jsou malé textové soubory, které se ukládají ve vašem prohlížeči při návštěvě webových stránek. Slouží k zajištění funkčnosti webu a zapamatování vašich preferencí.</p>
+
+    <h2>Jaké cookies používáme</h2>
+    <p>Tento web nepoužívá žádné analytické ani marketingové cookies. Nesledujeme vaši aktivitu na webu ani nesdílíme data s reklamními sítěmi.</p>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Název</th>
+          <th>Účel</th>
+          <th>Typ</th>
+          <th>Doba uchování</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Název">cookie_consent</td>
+          <td data-label="Účel">Uložení vašeho rozhodnutí o cookies (souhlas / odmítnutí)</td>
+          <td data-label="Typ">Nezbytné (localStorage)</td>
+          <td data-label="Doba">Trvalé (do smazání)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Služby třetích stran</h2>
+    <p>Web využívá služby třetích stran, které mohou ukládat vlastní cookies:</p>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Služba</th>
+          <th>Poskytovatel</th>
+          <th>Účel</th>
+          <th>Více informací</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Služba">Google Fonts</td>
+          <td data-label="Poskytovatel">Google LLC</td>
+          <td data-label="Účel">Načítání webových písem pro správné zobrazení stránky</td>
+          <td data-label="Více"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Zásady ochrany soukromí</a></td>
+        </tr>
+        <tr>
+          <td data-label="Služba">Google Maps</td>
+          <td data-label="Poskytovatel">Google LLC</td>
+          <td data-label="Účel">Zobrazení mapy s polohou sídla společnosti</td>
+          <td data-label="Více"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Zásady ochrany soukromí</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Jak spravovat cookies</h2>
+    <p>Cookies můžete spravovat nebo smazat v nastavení svého prohlížeče. Většina prohlížečů umožňuje:</p>
+    <ul>
+      <li>Zobrazit a smazat uložené cookies.</li>
+      <li>Blokovat cookies od třetích stran.</li>
+      <li>Blokovat cookies z konkrétních webů.</li>
+      <li>Blokovat všechny cookies.</li>
+      <li>Smazat všechny cookies při zavření prohlížeče.</li>
+    </ul>
+    <p>Upozorňujeme, že zablokováním cookies může dojít k omezení funkčnosti webu (např. nezobrazení mapy).</p>
+
+    <h2>Kontakt</h2>
+    <p>Máte-li dotazy ohledně cookies, kontaktujte nás:</p>
+    <p>Michal Jireš<br/>E-mail: <a href="mailto:info@etigroup.cz">info@etigroup.cz</a><br/>Tel.: +420 774 943 628</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>© 2026 ETI Holding a.s.</div>
+    <a href="./">Zpět na hlavní stránku</a>
+  </div>
+</footer>
+
+</body>
+</html>

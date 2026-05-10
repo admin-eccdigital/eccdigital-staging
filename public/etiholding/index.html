@@ -637,6 +637,35 @@
   }
 
   @media (max-width: 960px){ .scroll-hint{ display:none; } }
+
+  /* ============ COOKIE BANNER ============ */
+  .cookie-banner{
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--ink);
+    color: rgba(251,250,247,.85);
+    padding: 20px var(--pad);
+    z-index: 500;
+    display: none;
+    font-size: 14px; line-height: 1.6;
+  }
+  .cookie-banner.show{ display: block; }
+  .cookie-inner{
+    max-width: var(--maxw); margin: 0 auto;
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  }
+  .cookie-inner p{ flex: 1; min-width: 280px; margin: 0; }
+  .cookie-inner a{ color: var(--bg); text-decoration: underline; }
+  .cookie-btns{ display: flex; gap: 12px; flex-shrink: 0; }
+  .cookie-btns button{
+    padding: 10px 20px;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; border: 1px solid rgba(251,250,247,.4);
+    background: transparent; color: var(--bg);
+    transition: background .2s ease, color .2s ease;
+  }
+  .cookie-btns button.accept{ background: var(--bg); color: var(--ink); border-color: var(--bg); }
+  .cookie-btns button.accept:hover{ background: transparent; color: var(--bg); }
+  .cookie-btns button.reject:hover{ background: rgba(251,250,247,.12); }
 </style>
 </head>
 <body>
@@ -942,8 +971,8 @@
               <div class="v">21 17 64 51</div>
             </div>
             <div>
-              <div class="k">Forma</div>
-              <div class="v">Akciová společnost</div>
+              <div class="k">Zápis v OR</div>
+              <div class="v">B 28640, MS v Praze</div>
             </div>
           </div>
         </div>
@@ -1000,6 +1029,7 @@
           <li>Dlouhá 715/38</li>
           <li>110 00 Praha</li>
           <li>IČO: 21176451</li>
+          <li>sp. zn. B 28640, MS v Praze</li>
           <li><a href="mailto:info@etigroup.cz">info@etigroup.cz</a></li>
         </ul>
       </div>
@@ -1008,9 +1038,8 @@
     <div class="footer-bottom">
       <div>© 2026 ETI Holding a.s. — Všechna práva vyhrazena.</div>
       <div class="legal">
-        <a href="#">Ochrana údajů</a>
-        <a href="#">Cookies</a>
-        <a href="#">Tiráž</a>
+        <a href="ochrana-udaju.html">Ochrana údajů</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </div>
@@ -1057,6 +1086,27 @@
         ticking = true;
       }
     }, { passive: true });
+  }
+</script>
+
+<!-- ================= COOKIE BANNER ================= -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-inner">
+    <p>Tento web používá nezbytné cookies pro svůj provoz a služby třetích stran (Google Fonts, Google Maps).
+       Více v <a href="cookies.html">zásadách cookies</a> a <a href="ochrana-udaju.html">ochraně osobních údajů</a>.</p>
+    <div class="cookie-btns">
+      <button class="reject" onclick="setCookieConsent('rejected')">Odmítnout</button>
+      <button class="accept" onclick="setCookieConsent('accepted')">Rozumím</button>
+    </div>
+  </div>
+</div>
+<script>
+  function setCookieConsent(value){
+    localStorage.setItem('cookie_consent', value);
+    document.getElementById('cookieBanner').classList.remove('show');
+  }
+  if(!localStorage.getItem('cookie_consent')){
+    document.getElementById('cookieBanner').classList.add('show');
   }
 </script>
 
