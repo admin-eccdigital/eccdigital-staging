@@ -828,3 +828,51 @@ body:has(.mobile-menu[data-open="1"]) .fab-top{display:none !important}
   .article-image{border-radius:14px}
   .blog-prose{font-size:16px}
 }
+
+/* ============ Case study (reference detail) ============ */
+.blog-prose .cs-lead{font-size:19px;line-height:1.6;color:#0f172a;font-weight:500}
+.cs-shot{margin:28px 0}
+.cs-shot img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid rgba(15,23,42,.10);box-shadow:0 1px 2px rgba(15,23,42,.04),0 18px 40px -20px rgba(15,23,42,.30)}
+.cs-shot figcaption{margin-top:10px;font-size:13px;color:#64748b;line-height:1.5}
+.cs-shot--phone img{border-radius:22px;max-width:300px;margin:0 auto}
+.cs-shot--phone figcaption{text-align:center}
+.cs-duo{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center;margin:28px 0}
+.cs-duo .cs-shot{margin:0}
+.cs-duo--reverse{align-items:start}
+.cs-duo-text p + p{margin-top:1em}
+.cs-duo--photos{grid-template-columns:1fr 1fr;align-items:start}
+@media(max-width:680px){.cs-duo,.cs-duo--photos{grid-template-columns:1fr}}
+.cs-tip{margin:36px 0;padding:20px 22px;border-radius:14px;background:var(--accent-soft);border:1px solid var(--accent-soft-bd)}
+.cs-tip p{margin:0}
+.cs-facts{margin:20px 0 8px;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;background:#fff}
+.cs-facts dl{margin:0}
+.cs-facts dl > div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:14px 20px;border-top:1px solid #f1f5f9}
+.cs-facts dl > div:first-child{border-top:0}
+.cs-facts dt{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;padding-top:3px}
+.cs-facts dd{margin:0;font-size:15px;color:#0f172a}
+@media(max-width:560px){.cs-facts dl > div{grid-template-columns:1fr;gap:4px}}
+.cs-faq details{border-top:1px solid #e2e8f0;padding:14px 0}
+.cs-faq details:last-child{border-bottom:1px solid #e2e8f0}
+.cs-faq summary{cursor:pointer;font-weight:600;color:#0f172a;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.cs-faq summary::-webkit-details-marker{display:none}
+.cs-faq summary::after{content:"+";color:var(--accent);font-weight:700;font-size:20px;line-height:1}
+.cs-faq details[open] summary::after{content:"–"}
+.cs-faq details p{margin-top:10px;color:#475569}
+.cs-cta{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 8px}
+.blog-prose .cs-cta a{text-decoration:none}
+.blog-prose .cs-cta .btn-primary{color:#fff}
+.cs-btn-ghost{background:#fff !important;color:#0f172a !important;border-color:#cbd5e1 !important}
+.cs-btn-ghost:hover{border-color:var(--accent) !important;color:var(--accent-text) !important}
+.cs-closing{margin-top:32px !important;padding-top:24px;border-top:1px solid #e2e8f0;color:#475569}
+
+/* ============ Service page: web s rezervačním systémem ============ */
+.rs-hero-lead{margin:0 auto 26px !important;max-width:640px}
+.rs-hero-cta{justify-content:center}
+.rs-hero-cta a{text-decoration:none}
+.rs-seg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:620px){.rs-seg{grid-template-columns:1fr}}
+.rs-seg-card{position:relative;padding:22px 22px 20px;border:1px solid #e2e8f0;border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 24px -16px rgba(15,23,42,.18);overflow:hidden}
+.rs-seg-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.blog-prose .rs-seg-card h3{margin:6px 0 8px;font-size:19px}
+.blog-prose .rs-seg-card p{margin:0;font-size:15px;color:#475569}
+.rs-seg-kw{font-family:var(--font-mono,ui-monospace,monospace);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);font-weight:600}

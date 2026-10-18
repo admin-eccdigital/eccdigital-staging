@@ -39,6 +39,7 @@ export function Nav() {
     }
     const el = document.querySelector(href)
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    else window.location.href = "/eccdigital-staging/" + href
   }
   return (
     <>
