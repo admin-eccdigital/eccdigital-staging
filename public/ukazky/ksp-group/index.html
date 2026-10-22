@@ -680,12 +680,32 @@ input[type=range]{accent-color:#CC1523;width:100%;height:44px}
   var burger = $('#burger'), mnav = $('#mobile-nav');
   function setMega(open) {
     mega.hidden = !open;
+    if (!open) hoverOpened = false;
     megaBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     megaBtn.style.background = open ? '#141A20' : 'transparent';
     megaBtn.style.borderBottomColor = open ? ACC : 'transparent';
     chev.style.transform = open ? 'rotate(180deg)' : 'none';
   }
-  megaBtn.addEventListener('click', function () { setMega(mega.hidden); });
+  /* Na zařízeních s myší se mega menu otevírá už při najetí; krátké zpoždění zavření
+     pokryje přechod kurzoru z tlačítka do panelu. Klik a klávesnice fungují dál. */
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var megaTimer, hoverOpened = false;
+  if (canHover) {
+    [megaBtn, mega].forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        clearTimeout(megaTimer);
+        if (mega.hidden) { hoverOpened = true; setMega(true); }
+      });
+      el.addEventListener('mouseleave', function () {
+        clearTimeout(megaTimer);
+        megaTimer = setTimeout(function () { setMega(false); hoverOpened = false; }, 250);
+      });
+    });
+  }
+  megaBtn.addEventListener('click', function () {
+    if (hoverOpened) { hoverOpened = false; return; }
+    setMega(mega.hidden);
+  });
   document.addEventListener('click', function (e) {
     if (!mega.hidden && !mega.contains(e.target) && !megaBtn.contains(e.target)) setMega(false);
   });
